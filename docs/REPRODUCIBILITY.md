@@ -1,61 +1,28 @@
-# Reproducibility levels
+# Reproducibility
 
-The release separates the following operations.
+## Data and figures
 
-1. **Inspect retained results.** Open `paper/manuscript.pdf` and
-   `paper/supplement.pdf`; inspect the ten CSV tables in `data/figure_data/`.
-2. **Rebuild figures.** `scripts/build_figures.py` consumes those frozen CSVs;
-   it does not solve a phase-field equation or refit measurements. The five
-   result/graphical-abstract PNGs reproduced byte-for-byte in the retained
-   Matplotlib 3.9.4 environment. `provenance/figure_rebuild_check.json` records
-   this check. PDF serialization or fonts may vary across environments.
-   `scripts/build_method_schematic.py` separately builds the illustrative
-   schematic; it is not simulation data.
-3. **Build and exercise numerical kernels.** The short qualification described
-   in `docs/SIMULATIONS.md` builds the portable sources and checks updates
-   against retained source implementations. These checks validate packaging and
-   short-step equivalence; they do not rerun or independently validate a full
-   production trajectory.
-4. **Run the benchmark recipes.** The supplied source, inputs and settings can
-   be used for new runs. Production horizons require substantial local compute.
-   Follow `docs/SIMULATIONS.md` for commands, upstream dependencies and output
-   conventions. Do not equate a truncated demonstration with a full paper run.
+The ten CSV files in `data/figure_data/` contain the measurements plotted in the paper. `scripts/build_figures.py` rebuilds the result figures; `scripts/build_method_schematic.py` creates the explanatory schematic. The figure scripts do not run simulations or refit measurements.
 
-`provenance/source_map.json` maps exported numerical files to retained source
-identifiers and hashes. `provenance/SHA256SUMS` authenticates release file bytes;
-run `python scripts/verify_release.py` to check it. Hash agreement establishes
-file identity, not scientific correctness.
+The five result and graphical-abstract PNGs reproduced byte-for-byte with Matplotlib 3.9.4. PDF serialization and fonts can differ between environments.
 
-## What the release does not claim
+## Simulations
 
-The comparisons cover the smooth driven-junction and two-pair consumption cases
-in the paper. They do not establish a universal correction, a causal angle law,
-a full continuum-limit study, or an optimized accuracy-cost frontier. The late
-OpenPhase long-pair shape miss remains in the data. Empty-boundary observations
-are recorded as such. The Grose-Asimow route is a declared reconstruction, not
-an author-supplied implementation.
+The [simulation guide](SIMULATIONS.md) lists the supported run commands, supplied inputs and external dependencies. The public B2 trajectory driver covers fixed-domain H24. N20 moving-window and complete Grose measurement drivers are not included. The OpenPhase callers can run the supplied full observation schedules.
 
-The full internal execution history is preserved with the research project.
-This public package contains the compact inputs and reproducibility material,
-not every checkpoint, machine-specific operational receipt or interrupted run.
-The initial GitHub release has no invented DOI; a later Zenodo record can cite
-this exact tag.
+The release checks cover kernel updates, input/configuration checks, short OpenPhase runs and one B2 restart comparison. They do not validate every controller transition or repeat a complete production trajectory. The test records in `provenance/` describe the coverage. Large historical checkpoint archives are not included.
 
-## Rebuild the manuscript
+## File checks
 
-The retained sources use Elsevier's CAS single-column class. With Tectonic
-0.17.0 (or a suitable TeX distribution) available:
+Run `python scripts/verify_release.py` to compare files with `provenance/SHA256SUMS`. `provenance/source_map.json` records source and input identities. Checksums establish file identity, not the correctness of the numerical method.
+
+## Build the documents
+
+The sources use Elsevier's CAS single-column class. Copy `paper/` to a build directory and run:
 
 ```sh
-cd paper
 tectonic --keep-logs main.tex
 tectonic --keep-logs supplement.tex
 ```
 
-This creates `main.pdf` and `supplement.pdf`; the retained main article is named
-`manuscript.pdf` in the repository. Copy the source directory to a build folder
-first if you want to preserve the checked-in supplement PDF. A clean anonymous
-GitHub clone rebuilt both documents with matching extracted page text and page
-counts (11 and 6); `provenance/paper_rebuild_check.json` records that check.
-The retained class emits an overfull-box warning at `maketitle`; no change to
-manuscript layout was made for this software release.
+These commands create `main.pdf` and `supplement.pdf`. The checked-in main article is named `manuscript.pdf`. Tectonic 0.17.0 was used for the release builds.
