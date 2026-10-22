@@ -1,0 +1,3 @@
+route,speed_error_percent,terminal_fixed92_rms_W,relative_terminal_time_from_t1,terminal_rate_W_per_time
+Original B2,16.014139828072743,0.10514741757603363,0.25,-83.98586017192726
+Corrected B2,0.4520257563124801,0.006015744359541236,0.25,-99.54797424368752
