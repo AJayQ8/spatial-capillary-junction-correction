@@ -1,0 +1,12 @@
+{
+  "schema": "grose-h24-single-step-recipe-v1",
+  "description": "One-step Grose-Asimow source-based kernel check using H24 initial field; not a trajectory rerun.",
+  "h_W": 0.01,
+  "eta_W": 0.08,
+  "dt_W2": 8.000000000000001e-7,
+  "amplitude": 1.0,
+  "sigma": [[0.0, 1.0, 1.0], [1.0, 0.0, 1.5], [1.0, 1.5, 0.0]],
+  "mobility": [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]],
+  "mu0": [[0.0, -30.0, -30.0], [30.0, 0.0, 0.0], [30.0, 0.0, 0.0]],
+  "seed_sha256_raw": "f7f531647b10c595b661f9692a418f3cc8a03730b3fda4723b22b58b6a83b06c"
+}

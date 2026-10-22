@@ -1,0 +1,17 @@
+{
+  "schema": "b2-h24-single-step-recipe-v1",
+  "description": "One-step kernel recipe from the frozen H24 D9 whole-halo contract; not a trajectory rerun.",
+  "dx_W": 0.01,
+  "eta_W": 0.08,
+  "dt_W2": 4.0000000000000003e-7,
+  "epsilon_factor": 1.0,
+  "lambda_halo": 27.0,
+  "radius_cells": 8,
+  "planar_factor_a": 1.0285898885169724,
+  "local_controller_cadence_W2": 0.0002,
+  "controller_rule": "Evaluate at t=0 and at the first corrected integration state at or after each 0.0002 W^2 target; apply the updated mask before the following Euler step.",
+  "gamma": [[0.0, 1.0, 1.0], [1.0, 0.0, 1.5], [1.0, 1.5, 0.0]],
+  "delta_f": [[0.0, 30.0, 30.0], [-30.0, 0.0, 0.0], [-30.0, 0.0, 0.0]],
+  "mobility": [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]],
+  "seed_sha256_raw": "f7f531647b10c595b661f9692a418f3cc8a03730b3fda4723b22b58b6a83b06c"
+}

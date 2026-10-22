@@ -1,0 +1,25 @@
+{
+  "schema": "openphase-h24-full-dt-recipe-v1",
+  "upstream": "ICAMS/OpenPhase",
+  "upstream_revision": "f201751168f55eb5bd9539aa925fb8d61e5c3649",
+  "raw_dt_W2": 1e-6,
+  "physical_horizon_W2": 0.12,
+  "chi": 27.0,
+  "radius_cells": 8,
+  "h_W": 0.01,
+  "eta_W": 0.08,
+  "q": 1.5,
+  "p_tilde": -30.0,
+  "factor_a": 1.028859975087663,
+  "area_t99_short_W2": 0.06522384476241315,
+  "area_t99_long_W2": 0.09522384476241316,
+  "seed_sha256_raw": "f7f531647b10c595b661f9692a418f3cc8a03730b3fda4723b22b58b6a83b06c",
+  "sources": {
+    "native_route": "src/openphase_h24_native_v004.cpp",
+    "whole_halo_route": "src/openphase_h24_halo_v001.cpp",
+    "native_opi": "configs/openphase_h24_native_full_dt.opi",
+    "halo_opi": "configs/openphase_h24_halo_full_dt.opi",
+    "schedule": "inputs/schedule_full_dt.tsv"
+  },
+  "note": "The whole-halo correction is applied in the dedicated halo caller. The native caller is the retained OpenPhase baseline; its optional regularized branch is not the corrected route."
+}

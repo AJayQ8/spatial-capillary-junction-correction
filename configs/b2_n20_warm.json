@@ -1,0 +1,24 @@
+{
+  "schema": "b2-n20-warm-continuation-recipe-v1",
+  "description": "Matched developed-front continuation recipe. The retained input is the original native time-one field; its lab-frame crop origin is recorded below. The generic runner does not implement the benchmark's integer-row recentering, so this recipe is for one-step checks only.",
+  "dx_W": 0.005,
+  "eta_W": 0.1,
+  "dt_W2": 1e-7,
+  "epsilon_factor": 1.0,
+  "lambda_halo": 27.0,
+  "radius_cells": 20,
+  "gamma": [[0.0, 1.0, 1.0], [1.0, 0.0, 1.7320508075688772], [1.0, 1.7320508075688772, 0.0]],
+  "delta_f": [[0.0, 50.0, 50.0], [-50.0, 0.0, 0.0], [-50.0, 0.0, 0.0]],
+  "mobility": [[0.0, 1.0, 1.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0]],
+  "projection": "Original roundoff-safe Euclidean three-phase simplex projection from the retained B2 kernels.",
+  "initial_field": {
+    "path": "inputs/n20_warm_time1_phi.npy",
+    "source_time_W2": 1.0,
+    "source_absolute_step": 800000,
+    "lab_y_origin_W": -84.31999999999975,
+    "removed_rows_before_crop": 16864,
+    "raw_sha256": "6d05b997445af8cb38adf4fd5a0b8b26221d44a5cf638a927b358c06334b813d"
+  },
+  "trajectory_supported": false,
+  "trajectory_limit": "The published N20 continuation recenters by integer rows and updates laboratory coordinates from the recenter history. scripts/run_b2_trajectory.py intentionally supports the fixed H24 domain only."
+}

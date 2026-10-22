@@ -1,0 +1,83 @@
+Standard OpenPhase Input File
+Nondimensionalized with W=1 and T=1. Full H24 comparison V001.
+
+@RunTimeControl
+$SimTtl   Simulation Title                          : cold_halo_chi27_r8_base
+$nSteps   Number of Time Steps                      : 123463
+$FTime   Output to disk every (tSteps)               : 123463
+$STime   Output to screen every (tSteps)              : 123463
+$dt       Initial Time Step                          : 9.9999999999999995e-07
+$LUnits   Units of length                            : W
+$TUnits   Units of time                              : T
+$MUnits   Units of mass                              : 1
+$EUnits   Units of energy                            : 1
+$nOMP     Number of OpenMP Threads                   : 1
+$Restrt   Restart switch (Yes/No)                    : No
+$tStart   Restart at time step                       : 0
+$tRstrt   Restart output every (tSteps)              : 123463
+
+@GridParameters
+$Nx       System Size in X Direction                 : 100
+$Ny       System Size in Y Direction                 : 2400
+$Nz       System Size in Z Direction                 : 0
+$dx       Grid Spacing                               : 0.01
+$IWidth   Interface Width (in grid points)           : 8
+$Resolution Grid Resolution                          : SINGLE
+
+@Settings
+$Phase_0  Name of Phase 0                            : phase0
+$Phase_1  Name of Phase 1                            : phase1
+$Phase_2  Name of Phase 2                            : phase2
+
+@PhaseField
+$PhaseFieldLaplacianStencil  Phase-field Laplacian stencil : ISOTROPIC
+$PhaseFieldGradientStencil   Phase-field gradient stencil  : ISOTROPIC
+
+@DrivingForce
+$Average  Driving force averaging                    : No
+$bUnify   Unify driving force                        : No
+$Limiting Enable driving force limiting              : No
+
+@InterfaceProperties
+$EnergyModel_0_0    Interface energy model            : ISO
+$Sigma_0_0          Interface energy                  : 1.0
+$MobilityModel_0_0  Interface mobility model          : ISO
+$Mu_0_0             Interface mobility                : 1.0
+$EnergyModel_0_1    Interface energy model            : ISO
+$Sigma_0_1          Interface energy                  : 1.0
+$MobilityModel_0_1  Interface mobility model          : ISO
+$Mu_0_1             Interface mobility                : 1.0
+$EnergyModel_0_2    Interface energy model            : ISO
+$Sigma_0_2          Interface energy                  : 1.0
+$MobilityModel_0_2  Interface mobility model          : ISO
+$Mu_0_2             Interface mobility                : 1.0
+$EnergyModel_1_1    Interface energy model            : ISO
+$Sigma_1_1          Interface energy                  : 1.0
+$MobilityModel_1_1  Interface mobility model          : ISO
+$Mu_1_1             Interface mobility               : 1.0
+$EnergyModel_1_2    Interface energy model            : ISO
+$Sigma_1_2          Interface energy                  : 1.5
+$MobilityModel_1_2  Interface mobility model          : ISO
+$Mu_1_2             Interface mobility                : 1.0
+$EnergyModel_2_2    Interface energy model            : ISO
+$Sigma_2_2          Interface energy                  : 1.0
+$MobilityModel_2_2  Interface mobility model          : ISO
+$Mu_2_2             Interface mobility                : 1.0
+$TripleJunctionModel Triple-junction model             : NONE
+$RegularizationFactor Regularization factor            : 1.0
+$CurvatureFactor    Curvature factor                   : 1.0
+$ExtrapolationMode  Energy extrapolation mode          : NONE
+
+@InterfaceRegularization
+$Average      Average curvature field                 : Yes
+$Range        Averaging radius in grid points         : 4
+$ClearingMode Curvature clearing mode                 : AUTOMATIC
+$Threshold    Curvature threshold                     : 2.2204460492503131e-16
+
+@BoundaryConditions
+$BC0X     X axis beginning boundary condition         : NoFlux
+$BCNX     X axis far end boundary condition           : NoFlux
+$BC0Y     Y axis beginning boundary condition         : NoFlux
+$BCNY     Y axis far end boundary condition           : NoFlux
+$BC0Z     Z axis beginning boundary condition         : NoFlux
+$BCNZ     Z axis far end boundary condition           : NoFlux
