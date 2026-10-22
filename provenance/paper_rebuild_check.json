@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "engine": "Tectonic 0.17.0",
+  "source": "anonymous GitHub clone",
+  "checks": [
+    {
+      "retained": "paper/manuscript.pdf",
+      "pages": 11,
+      "rebuild_text_and_page_count_match": true,
+      "retained_sha256": "8d355b5a7d38466fb036cf2b4a4b965ae57914ce0e06c4a9ad6ec32a6b874529",
+      "rebuilt_sha256": "cba2d47da3528e19027dca09020e866d7ff6e658a4b313a5f8df4e6d9bfeefbd"
+    },
+    {
+      "retained": "paper/supplement.pdf",
+      "pages": 6,
+      "rebuild_text_and_page_count_match": true,
+      "retained_sha256": "d466bf503c53bea2ccfa1ea2d6abf9fa9e95f9e159fd91d5562441376b4969b9",
+      "rebuilt_sha256": "3b89e15cd5eddf36fdaf258a46cb110452c86228ca074d756c9c434b52127e55"
+    }
+  ],
+  "tex_warning": "Retained main.tex emits an overfull box warning at maketitle; extracted page text and page counts match the retained PDFs."
+}

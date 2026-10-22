@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "reviewed_utc": "2026-10-22",
+  "checks": [
+    "Ten CSV exports and thirteen figure assets retain manuscript v008 bytes.",
+    "All seven C kernel sources match retained source files.",
+    "OpenPhase caller and config hashes match the completed source map.",
+    "N20 starting array matches the authenticated original time-one checkpoint.",
+    "Both public numerical terminal receipts completed with exit status zero.",
+    "Source-map release/input/config hashes match disk.",
+    "Python source syntax, public text private-path scan and symlink checks pass.",
+    "Anonymous clone manuscript rebuilds retain all page text and page counts."
+  ],
+  "numerical_scope": "Short release qualification only; no new full-horizon benchmark or scientific claim.",
+  "source_map_sha256": "8999c9a5230facab965ff0ba7676dfc3f7af4cd32121cdc2b9f6b821f75e16cc",
+  "numerical_qualification_sha256": "b4b2f84ccc5e31d6cd9dec0e9b89e6e4ef45cb46fa4c5da6d4e24f31627cfd10",
+  "source_count": 26
+}

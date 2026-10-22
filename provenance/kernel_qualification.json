@@ -1,0 +1,101 @@
+{
+  "schema": "scjc-bounded-numerical-qualification-v1",
+  "status": "PASS",
+  "qualified_on": "2026-10-22",
+  "source_map_sha256": "8999c9a5230facab965ff0ba7676dfc3f7af4cd32121cdc2b9f6b821f75e16cc",
+  "qualification_jobs": [
+    {
+      "scope": "Public seven-kernel smoke, four OpenPhase two-step caller checks, and H24 local-memory restart/cursor check",
+      "status": "PASS",
+      "aggregate_report_sha256": "0e73b91fda15f8ac0a33fdefecf4b89b50e47737a0417299d39d385e30de7472",
+      "kernel_report_sha256": "c2976d5f742a1ba0c56ad67f3e194fc37dd4ce4098867c717be6ffd5baa3f164",
+      "openphase_report_sha256": "a57127be656e3b3d56dad329d7db55ababf55bba1df2bd2edaf7602845db8112"
+    },
+    {
+      "scope": "H24/N20 one-step CLI recipe pairing and expected mismatched-recipe rejection",
+      "status": "PASS",
+      "report_sha256": "b3d3a3977e99eb09977ca8e0e63c3f602a355036513340e0502c640c8db48fa9"
+    }
+  ],
+  "b2_kernels": {
+    "status": "PASS",
+    "checks": 9,
+    "coverage": [
+      "D5 and D9 native and whole-halo operators",
+      "chi=0 halo/native identity for both stencils",
+      "D5 and D9 local-memory kernels on the retained N20 warm field",
+      "one-step Grose source-based kernel"
+    ],
+    "full_production_trajectory_rerun": false
+  },
+  "b2_step_cli": {
+    "status": "PASS",
+    "cases": [
+      {
+        "case": "h24_d9_halo",
+        "recipe": "configs/b2_h24.json",
+        "input": "inputs/h24_cold_initial_field.npz",
+        "input_raw_sha256": "f7f531647b10c595b661f9692a418f3cc8a03730b3fda4723b22b58b6a83b06c",
+        "output_raw_sha256": "14396fe98510d411458636e2188173393418d182bf043f61244b3d5c1ead4bca",
+        "shape": [
+          3,
+          2400,
+          100
+        ]
+      },
+      {
+        "case": "n20_d5_halo",
+        "recipe": "configs/b2_n20_warm.json",
+        "input": "inputs/n20_warm_time1_phi.npy",
+        "input_raw_sha256": "6d05b997445af8cb38adf4fd5a0b8b26221d44a5cf638a927b358c06334b813d",
+        "output_raw_sha256": "9b28496fb7060e46d19693e26eee398e14d61168c5978c7edd224fd4008e8839",
+        "shape": [
+          3,
+          800,
+          200
+        ]
+      }
+    ],
+    "wrong_h24_recipe_rejected_for_n20": true,
+    "qualification_report_sha256": "b3d3a3977e99eb09977ca8e0e63c3f602a355036513340e0502c640c8db48fa9"
+  },
+  "h24_local_memory_restart": {
+    "status": "PASS",
+    "split_run_steps": [
+      510,
+      5
+    ],
+    "continuous_steps": 515,
+    "controller_event_step": 515,
+    "next_controller_index": 2,
+    "split_and_continuous_field_raw_sha256": "14654b78ee9810dc199b3549415bd33541317491401d13eacf50d1a81ac51632",
+    "field_states_equal": true,
+    "suppression_masks_equal": true,
+    "suppressed_support_nodes_at_checked_controller_event": 0,
+    "qualification_limit": "The first checked state advances the controller cursor but has no active suppression support; this smoke does not qualify a nonempty suppression-mask transition or full observer pipeline."
+  },
+  "openphase": {
+    "status": "PASS",
+    "upstream_revision": "f201751168f55eb5bd9539aa925fb8d61e5c3649",
+    "routes": [
+      "native-full",
+      "halo-full",
+      "native-half",
+      "halo-half"
+    ],
+    "steps_per_route": 2,
+    "qualification_report_sha256": "a57127be656e3b3d56dad329d7db55ababf55bba1df2bd2edaf7602845db8112",
+    "full_horizon_rerun": false
+  },
+  "inputs": {
+    "h24_cold_initial_field_raw_sha256": "f7f531647b10c595b661f9692a418f3cc8a03730b3fda4723b22b58b6a83b06c",
+    "n20_warm_time1_phi_raw_sha256": "6d05b997445af8cb38adf4fd5a0b8b26221d44a5cf638a927b358c06334b813d"
+  },
+  "scope_limits": [
+    "No full-horizon B2 or OpenPhase production trajectories were rerun.",
+    "The B2 time loop supports fixed H24 only; it does not reproduce N20 moving-window recentering.",
+    "Grose is qualified as a one-step source-based reconstruction, not a full production comparator trajectory.",
+    "OpenPhase smoke advances two steps per route and is not a trajectory reproduction."
+  ],
+  "execution_note": "The seven-kernel/OpenPhase/restart group ran first. The final test orchestrator was then refactored to invoke the CLI helper, which passed separately; the unchanged numerical group was not repeated. This release records the two passing checks separately."
+}

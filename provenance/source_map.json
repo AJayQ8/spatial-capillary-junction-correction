@@ -1,0 +1,271 @@
+{
+  "schema": "portable-source-map-v2",
+  "statement": "Release-relative paths are public. Historical source references are relative evidence identifiers for audit provenance, not dependencies needed to run the public package. No private absolute filesystem paths or machine-specific run receipts are required.",
+  "upstream": [
+    {
+      "project": "ICAMS/OpenPhase",
+      "repository": "https://github.com/ICAMS/OpenPhase.git",
+      "revision": "f201751168f55eb5bd9539aa925fb8d61e5c3649",
+      "license": "GPL-3.0",
+      "license_file": "src/OpenPhase_LICENSE.txt",
+      "note": "OpenPhase is a separate dependency, not vendored. The included custom halo caller implements the whole-halo correction."
+    }
+  ],
+  "sources": [
+    {
+      "release_path": "src/kernels/b2_d5_native.c",
+      "release_sha256": "16ca3ec6d7abc35f16e88cee9f1fe11594f2976984ec677531ff9ba658fdd720",
+      "retained_source_reference": "bench/b2_fast.c",
+      "role": "D5 native B2 operator",
+      "retained_source_sha256": "16ca3ec6d7abc35f16e88cee9f1fe11594f2976984ec677531ff9ba658fdd720",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/kernels/b2_d5_halo.c",
+      "release_sha256": "a7f81205ddd7437d41d5d5edd456b045246700a25fd58d5309f37d10d5af22d7",
+      "retained_source_reference": "bench/junction_capillary_halo_probe_v001/capillary_halo_fast.c",
+      "role": "D5 whole-halo B2 operator",
+      "retained_source_sha256": "a7f81205ddd7437d41d5d5edd456b045246700a25fd58d5309f37d10d5af22d7",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/kernels/b2_d5_local_memory.c",
+      "release_sha256": "ddb29d8a2c02dbc1cf194d12f03ad37876829aaf0ef3ba435b7a262b95614869",
+      "retained_source_reference": "bench/grain_overlap_local_memory_v001/capillary_halo_local.c",
+      "role": "D5 local-memory B2 operator",
+      "retained_source_sha256": "ddb29d8a2c02dbc1cf194d12f03ad37876829aaf0ef3ba435b7a262b95614869",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/kernels/b2_d9_native.c",
+      "release_sha256": "b216d9441fbc1de777b3a3acf6d137f4b2d6414b31013aa56b5cf3f5d2c9dc89",
+      "retained_source_reference": "bench/calibration_control_results/isotropic_stencil_diagnosis_v001/b2_nine_point_full_v001.c",
+      "role": "D9 native B2 operator",
+      "retained_source_sha256": "b216d9441fbc1de777b3a3acf6d137f4b2d6414b31013aa56b5cf3f5d2c9dc89",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/kernels/b2_d9_halo.c",
+      "release_sha256": "e2d6401c3907341068f75246b6562ee96e72214ad2888a06607b601c80a8e77c",
+      "retained_source_reference": "bench/grain_applicability_diagnosis_v001/nine_point_eta008_v001/capillary_halo_nine_point.c",
+      "role": "D9 whole-halo B2 operator",
+      "retained_source_sha256": "e2d6401c3907341068f75246b6562ee96e72214ad2888a06607b601c80a8e77c",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/kernels/b2_d9_local_memory.c",
+      "release_sha256": "23b709b38ac35b9dcf30392cc157c8adcee3f9fe589fb8718ce087973375007a",
+      "retained_source_reference": "bench/grain_applicability_diagnosis_v001/nine_point_eta008_v001/cold_fixed_recipe_v001/capillary_halo_local_nine_point.c",
+      "role": "D9 local-memory B2 operator",
+      "retained_source_sha256": "23b709b38ac35b9dcf30392cc157c8adcee3f9fe589fb8718ce087973375007a",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/kernels/grose_full_kernel.c",
+      "release_sha256": "f677a12e39a64ac2b5953f82073c665789cbad65c7042b4f0857082fe5dd2826",
+      "retained_source_reference": "bench/grose_complete_comparison_v001/grose_full_kernel_v002.c",
+      "role": "Grose-Asimow source-based reconstructed C kernel",
+      "retained_source_sha256": "f677a12e39a64ac2b5953f82073c665789cbad65c7042b4f0857082fe5dd2826",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/openphase_h24_native_v004.cpp",
+      "release_sha256": "6c77924499b0667fda2f0b0dcda93bde8d8e426993a770359191486fd8d381c9",
+      "retained_source_reference": "bench/openphase_same_case_mapping_20261011/full_h24_comparison_v001/openphase_h24_full_v004.cpp",
+      "role": "OpenPhase native baseline caller; optional regularized branch is not the spatial correction",
+      "retained_source_sha256": "6c77924499b0667fda2f0b0dcda93bde8d8e426993a770359191486fd8d381c9",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/openphase_h24_halo_v001.cpp",
+      "release_sha256": "2e050c5b01dfd8c64bf40346534843025e8f800ba44c98fc4487d5baf4df43be",
+      "retained_source_reference": "bench/openphase_halo_transfer_v001/source/openphase_h24_halo_v001.cpp",
+      "role": "OpenPhase whole-halo corrected caller for both raw-timestep levels",
+      "retained_source_sha256": "2e050c5b01dfd8c64bf40346534843025e8f800ba44c98fc4487d5baf4df43be",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/openphase_h24_native_halfdt_v001.cpp",
+      "release_sha256": "264e4c289ee3d9365ce2b8ccfc032551ea6d7cb090ae01bf11f923b2411965c9",
+      "retained_source_reference": "bench/openphase_half_timestep_20261021_v001/inputs/openphase_h24_native_halfdt_v001.cpp",
+      "role": "OpenPhase half-step native caller; positive finite-dt admission guard derivative",
+      "retained_source_sha256": "264e4c289ee3d9365ce2b8ccfc032551ea6d7cb090ae01bf11f923b2411965c9",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/python/grose_full_kernel.py",
+      "release_sha256": "93a9fd5a45443a43baa0e3b7ec25cf803450b43199ac51fb3831191ec1523fab",
+      "retained_source_reference": "bench/grose_complete_comparison_v001/grose_full_kernel.py",
+      "role": "Python ctypes adapter for the included Grose C kernel",
+      "retained_source_sha256": "93a9fd5a45443a43baa0e3b7ec25cf803450b43199ac51fb3831191ec1523fab",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/python/local_memory_logic.py",
+      "release_sha256": "756eea114b5b1093ac52d1b1be14242c772ec0063b0374c3743fceee7d03e151",
+      "retained_source_reference": "bench/grain_overlap_local_memory_v001/local_memory_logic_v002.py",
+      "role": "Local overlap and ancestry controller",
+      "retained_source_sha256": "756eea114b5b1093ac52d1b1be14242c772ec0063b0374c3743fceee7d03e151",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/python/local_memory_logic_sparse.py",
+      "release_sha256": "34d65f85225fa88bff594187d69e9c6e5390a327b939ab4bd51e83e88cf310b2",
+      "retained_source_reference": "bench/grain_local_memory_helper_optimization_v001/local_memory_logic_sparse_v001.py",
+      "role": "Sparse dilation helper; packaged import path localized; not selected in production",
+      "retained_source_sha256": "0091ac669eab90be629c07c620799f67324e451fde263183eaf0e20ebf3a0a51",
+      "byte_identical_to_retained_source": false
+    },
+    {
+      "release_path": "src/openphase_macos_metadata_compat_v001.h",
+      "release_sha256": "1604c6f3845db9f9821f03964eb38ce43baa38cec08df7a35cd715686073a68e",
+      "role": "Build-only Darwin compatibility preinclude for a Linux-specific executable-path query; no change to upstream OpenPhase source"
+    },
+    {
+      "release_path": "src/OpenPhase_LICENSE.txt",
+      "release_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "role": "License notice copied from the pinned upstream OpenPhase source"
+    },
+    {
+      "release_path": "src/python/b2_api.py",
+      "release_sha256": "5b35599e1e3b0339a146af9a6f7e4232b443b1d4d6ff990f00665e2fd0e4d199",
+      "role": "Portable ctypes adapter for B2 C kernels"
+    },
+    {
+      "release_path": "scripts/build_kernels.py",
+      "release_sha256": "a1d2b1e91413eb6108a166f0e38c963f1d84c4b1fc40b38e4fada76271c50325",
+      "role": "Portable C kernel build entrypoint"
+    },
+    {
+      "release_path": "scripts/run_b2_step.py",
+      "release_sha256": "76d961b8d210863588ccd57ee0acd0728ff40b9b7f64019f179fa3c662dcd922",
+      "role": "One-step B2 kernel entrypoint"
+    },
+    {
+      "release_path": "scripts/run_b2_trajectory.py",
+      "release_sha256": "f5579752da9fdd8124821cb14b5b9c05a6473bf66a50e3068958efda898ff004",
+      "role": "Small restartable H24 B2 time loop; not N20 moving-window reproduction"
+    },
+    {
+      "release_path": "scripts/run_grose_step.py",
+      "release_sha256": "f4bd2619c8d91f7b6850b6f0e524bb9f5b3ff6b6c3f4f0cd451fed73ab6c1204",
+      "role": "One-step Grose kernel entrypoint"
+    },
+    {
+      "release_path": "scripts/build_openphase_callers.py",
+      "release_sha256": "357d596f584930473659a79c525782d5a6fe3c4729e887debf7a959f65d05ae6",
+      "role": "Build retained OpenPhase callers against pinned upstream checkout"
+    },
+    {
+      "release_path": "scripts/run_openphase_route.py",
+      "release_sha256": "68ebca01f0a8fd9508e32f020c25d7c13e8c20443da3897708edf0d2d9829820",
+      "role": "Run one selected OpenPhase route from included H24 field and recipe"
+    },
+    {
+      "release_path": "tests/qualify_kernels.py",
+      "release_sha256": "675d49483be1227df994ff9d5938de2fece43c2bb4668567ef849da5f4f33ff7",
+      "role": "Public one-step kernel qualification; optional retained-source comparison requires private authoring tree"
+    },
+    {
+      "release_path": "tests/run_openphase_smoke.py",
+      "release_sha256": "5c277f209ae41fdad0490457a9d0d769dbaf748d9e3a748b3b5f12cfc2ab1a8f",
+      "role": "Two-step checks for the four OpenPhase caller/timestep combinations"
+    },
+    {
+      "release_path": "tests/run_release_smoke.py",
+      "release_sha256": "e67b229812dd92629587d8211928c65e400eb66cc426686fb6a7d7313707fdce",
+      "role": "Bounded local release qualification orchestration"
+    },
+    {
+      "release_path": "tests/qualify_b2_step_cli.py",
+      "release_sha256": "c7783f11660fdd7e61f06766b8a21f61feedf0c0b9501b008245186e2a00b9a3",
+      "role": "Bounded H24/N20 one-step CLI qualification and recipe mismatch guard test"
+    }
+  ],
+  "configs": [
+    {
+      "path": "configs/b2_h24.json",
+      "sha256": "84dd2320533a8c59046915e9cc85a29ce10bbfcde3ba72d3ac92d1a3083ac37d"
+    },
+    {
+      "path": "configs/b2_n20_warm.json",
+      "sha256": "659c77a787c453a5ca5176ad3d32ec8be99c85aff84b85204a1025d5841618f0"
+    },
+    {
+      "path": "configs/grose_h24.json",
+      "sha256": "b1a60e145cbccc17a51a2141fa52fe28d733aee7a64f4bd8aef3702866c18402"
+    },
+    {
+      "path": "configs/openphase_h24_full_dt.json",
+      "sha256": "eac17f022ee73f549549496b295128da43b0fcfb3b35da906ce5a79a74c9daf3"
+    },
+    {
+      "path": "configs/openphase_h24_halfdt.json",
+      "sha256": "cc0fb5c78d9818e280de8979a3089489fdbb7fac6210829cdef874b23e435dbd"
+    },
+    {
+      "path": "configs/openphase_h24_halo_full_dt.opi",
+      "sha256": "80b10407d147c52afd1bec09f2b49a5ac8f26c7b212b4fcbb8a63ddfdb46b155"
+    },
+    {
+      "path": "configs/openphase_h24_halo_halfdt.opi",
+      "sha256": "8b9ed7e149c50a45b3de7e180b004037b2d284e2182baceb21410e58a382a680"
+    },
+    {
+      "path": "configs/openphase_h24_native_full_dt.opi",
+      "sha256": "5e6dd915b0d592e4d26887a9042f9c3b5e094fa5e1793dc1fee5c79abdb14971"
+    },
+    {
+      "path": "configs/openphase_h24_native_halfdt.opi",
+      "sha256": "8b9ed7e149c50a45b3de7e180b004037b2d284e2182baceb21410e58a382a680"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "inputs/h24_cold_initial_field.npz",
+      "file_sha256": "df49bb842f6e08ae56d07bc4119eb944da26ab0e305b57e745fdf357be404db9",
+      "shape": [
+        3,
+        2400,
+        100
+      ],
+      "dtype": "float64",
+      "raw_array_sha256": "f7f531647b10c595b661f9692a418f3cc8a03730b3fda4723b22b58b6a83b06c",
+      "origin": "Retained H24 cold initial field; raw identity independently checked against the saved production input.",
+      "retained_source_reference": "bench/openphase_same_case_mapping_20261011/h24_feasibility_v001/results_v001/run_v002/decoded_inputs/cold_seed.phase_y_x.f64"
+    },
+    {
+      "path": "inputs/n20_warm_time1_phi.npy",
+      "file_sha256": "b3eac108f894bd4b5a1aa39bfd527bcf49b3ec6c4ba19dd1001fd0d0ad56d30b",
+      "shape": [
+        3,
+        800,
+        200
+      ],
+      "dtype": "float64",
+      "raw_array_sha256": "6d05b997445af8cb38adf4fd5a0b8b26221d44a5cf638a927b358c06334b813d",
+      "origin": "Native N20 production checkpoint sampled_fields[0] at absolute source time 1.0 and step 800000; crop follows 16864 recentered rows.",
+      "source_checkpoint_sha256": "15c8e7656fac8bd8119d00983867b819b104833119e1e0ee96b89d364c59b204",
+      "source_result_sha256": "9b8f5e4c7cfd55c42bea4f88a3ac939096ff3b31602f9c639a465ef29c6cdfd2",
+      "lab_y_origin_W": -84.31999999999975
+    },
+    {
+      "path": "inputs/schedule_full_dt.tsv",
+      "file_sha256": "158328cb2687974f372021b2b964eb4d5c86f9d0ad7c26321f44590b54127efa",
+      "role": "Frozen OpenPhase full-step scalar/field schedule",
+      "retained_source_reference": "bench/openphase_same_case_mapping_20261011/full_h24_comparison_v001/results_v004/production_native_v004/schedule.tsv"
+    },
+    {
+      "path": "inputs/schedule_half_dt.tsv",
+      "file_sha256": "b518e1fec2b8b4adaf1a8525ec233a2aab014d4269f5cb21496091da61e084f0",
+      "role": "Frozen OpenPhase half-step scalar/field schedule",
+      "retained_source_reference": "bench/openphase_half_timestep_20261021_v001/inputs/schedule_half_dt.tsv"
+    }
+  ],
+  "limits": [
+    "Public kernel checks exercise one-step B2 D5/D9 native and whole-halo operators, local-memory state updates, and a one-step Grose reconstruction.",
+    "The small time loop implements only the fixed H24 B2 domain; it does not implement N20 moving-window recentering or the full production observer suite.",
+    "OpenPhase caller qualification advances two steps only; full schedules are available as explicit user-run commands but no full-horizon rerun is part of release qualification.",
+    "Grose source and recipe are included for a one-step reconstruction check, not a full production comparator trajectory."
+  ]
+}

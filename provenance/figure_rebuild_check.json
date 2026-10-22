@@ -1,0 +1,27 @@
+{
+  "fig01_n20_matched.png": {
+    "pixels_byte_identical_to_manuscript": true,
+    "rebuilt_sha256": "6e1cf9a69fef874ccf4eb2271f5db7702b974a53c383b4955f0587439d3ed5c8",
+    "manuscript_sha256": "6e1cf9a69fef874ccf4eb2271f5db7702b974a53c383b4955f0587439d3ed5c8"
+  },
+  "fig02_h24_routes_grose.png": {
+    "pixels_byte_identical_to_manuscript": true,
+    "rebuilt_sha256": "42edbde96af310ca0b1bec08c2c22c430d79b29376c9b483dd3d6b421a0f05a8",
+    "manuscript_sha256": "42edbde96af310ca0b1bec08c2c22c430d79b29376c9b483dd3d6b421a0f05a8"
+  },
+  "fig03_parameter_robustness.png": {
+    "pixels_byte_identical_to_manuscript": true,
+    "rebuilt_sha256": "49495a21c68b73cb975f2174cea240a225733212723d2d47f506ecf637c4a0da",
+    "manuscript_sha256": "49495a21c68b73cb975f2174cea240a225733212723d2d47f506ecf637c4a0da"
+  },
+  "fig04_openphase_transfer.png": {
+    "pixels_byte_identical_to_manuscript": true,
+    "rebuilt_sha256": "71ce47302043b38e8120da64a493f84d62a8d3bfa59e20fdf4c6c655228504dd",
+    "manuscript_sha256": "71ce47302043b38e8120da64a493f84d62a8d3bfa59e20fdf4c6c655228504dd"
+  },
+  "graphical_abstract.png": {
+    "pixels_byte_identical_to_manuscript": true,
+    "rebuilt_sha256": "b23bcf9642203c3ad6013a2b3e9cce46b999b6beaaf037f2bcf8933f68db31f1",
+    "manuscript_sha256": "b23bcf9642203c3ad6013a2b3e9cce46b999b6beaaf037f2bcf8933f68db31f1"
+  }
+}

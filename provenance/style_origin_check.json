@@ -1,0 +1,14 @@
+{
+  "upstream": "https://ctan.org/pkg/els-cas-templates",
+  "checked_utc": "2026-10-22",
+  "files": {
+    "cas-sc.cls": {
+      "sha256": "5030545ed09c770afa31004817bf8626ca7f311cf795e6c2825ecae113bb42e9",
+      "matches_upstream": true
+    },
+    "cas-common.sty": {
+      "sha256": "e95a01f4b33531d01ade231669fcc1e42f52193dddcb22ead5b63240eb952f8f",
+      "matches_upstream": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "sources": [
+    {
+      "file": "src/kernels/b2_d5_native.c",
+      "recorded_production_source_sha256": "16ca3ec6d7abc35f16e88cee9f1fe11594f2976984ec677531ff9ba658fdd720",
+      "match": true
+    },
+    {
+      "file": "src/kernels/b2_d5_halo.c",
+      "recorded_production_source_sha256": "a7f81205ddd7437d41d5d5edd456b045246700a25fd58d5309f37d10d5af22d7",
+      "match": true
+    }
+  ],
+  "warm_field": {
+    "file": "inputs/n20_warm_time1_phi.npy",
+    "shape": [
+      3,
+      800,
+      200
+    ],
+    "raw_sha256": "6d05b997445af8cb38adf4fd5a0b8b26221d44a5cf638a927b358c06334b813d",
+    "matches_authenticated_original_checkpoint": true,
+    "original_checkpoint_sha256": "02ccd1d81c56cfbd76d61e465e9d9bce1b1d8c5c01ff2c52912a6baace696846",
+    "origin_W": -84.31999999999975,
+    "removed_rows": 16864,
+    "source_time": 1.0
+  },
+  "scope": "Byte identity and provenance checks; no PDE updates."
+}
