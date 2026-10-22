@@ -32,8 +32,8 @@ def text(ax, x, y, s, *, size, color=INK, ha="left", va="center", weight="normal
                    fontweight=weight, zorder=8)
 
 
-def panel_title(ax, x, letter, title):
-    text(ax, x, 2.47, f"({letter})  {title}", size=9.5, weight="semibold")
+def panel_title(ax, x, letter, title, *, ha="left"):
+    text(ax, x, 2.47, f"({letter})  {title}", size=9.5, weight="semibold", ha=ha)
 
 
 def draw_y_field(ax, left: float, *, window: bool = False):
@@ -140,9 +140,12 @@ def make_figure():
     margin = 0.09
     panel_w = (WIDTH - 2 * margin - 2 * gap) / 3
     lefts = [margin + i * (panel_w + gap) for i in range(3)]
-    for left, letter, title in zip(lefts, "abc",
-                                  ["Ternary source", "Square neighborhood", "Force correction"]):
-        panel_title(ax, left, letter, title)
+    titles = ["Ternary source", "Square neighborhood", "Force correction"]
+    for left, letter, title in zip(lefts, "abc", titles):
+        if letter == "c":
+            panel_title(ax, left + panel_w / 2, letter, title, ha="center")
+        else:
+            panel_title(ax, left, letter, title)
 
     draw_y_field(ax, lefts[0])
     draw_y_field(ax, lefts[1], window=True)
