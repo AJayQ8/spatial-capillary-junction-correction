@@ -1,22 +1,37 @@
 {
   "status": "PASS",
+  "release_version": "1.0.1",
+  "retained_manuscript_version": "manuscript_cms_v009",
   "engine": "Tectonic 0.17.0",
-  "source": "anonymous GitHub clone",
+  "source": "Clean extraction of the CMS LaTeX_source.zip; no private authoring paths required.",
+  "source_archive": {
+    "file": "CMS package LaTeX_source.zip",
+    "sha256": "6d6e560de18cf27524be94dcd5381512ff644e8bde2b11ac7ed6803199efd279",
+    "member_count": 45,
+    "prebuilt_bbl_included": false,
+    "bibtex_generated_during_build": true
+  },
+  "commands": [
+    "tectonic --keep-intermediates --keep-logs --outdir <output> -r 2 main.tex",
+    "tectonic --keep-intermediates --keep-logs --outdir <output> -r 2 supplement.tex"
+  ],
   "checks": [
     {
       "retained": "paper/manuscript.pdf",
       "pages": 11,
-      "rebuild_text_and_page_count_match": true,
-      "retained_sha256": "8d355b5a7d38466fb036cf2b4a4b965ae57914ce0e06c4a9ad6ec32a6b874529",
-      "rebuilt_sha256": "cba2d47da3528e19027dca09020e866d7ff6e658a4b313a5f8df4e6d9bfeefbd"
+      "normalized_page_text_match": true,
+      "page_count_match": true,
+      "retained_sha256": "2eb54a11d793d3636ce4fbfb91bf9b8735d0153ad6516d4f19d374f13e9ea105",
+      "rebuilt_sha256": "c571300f4c30ef82e584456c4ac4a3c9fd8ea4a7155364d57577b07b7abc6165"
     },
     {
       "retained": "paper/supplement.pdf",
       "pages": 6,
-      "rebuild_text_and_page_count_match": true,
-      "retained_sha256": "d466bf503c53bea2ccfa1ea2d6abf9fa9e95f9e159fd91d5562441376b4969b9",
-      "rebuilt_sha256": "3b89e15cd5eddf36fdaf258a46cb110452c86228ca074d756c9c434b52127e55"
+      "normalized_page_text_match": true,
+      "page_count_match": true,
+      "retained_sha256": "824c48e3c7f1bade46d93a56d701ef86bd001c3026562fc930ee497e624dbddd",
+      "rebuilt_sha256": "2e5081a98b166757f162c469cd77bd7b949c926cec95de902cf1a6cda8394eac"
     }
   ],
-  "tex_warning": "Retained main.tex emits an overfull box warning at maketitle; extracted page text and page counts match the retained PDFs."
+  "tex_warning": "The main build repeats the inherited overfull title hbox warning (117.0831 pt at main.tex line 46); the supplement build reports no TeX warnings. The normalized extracted text matches page by page in both PDFs."
 }

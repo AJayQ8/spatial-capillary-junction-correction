@@ -1,0 +1,30 @@
+{
+  "schema": "scjc-release-update-provenance-v1",
+  "release_version": "1.0.1",
+  "date": "2026-10-22",
+  "scope": "Packaging and manuscript-source refresh from v1.0.0 to manuscript_cms_v009. No numerical results were recomputed.",
+  "changed": {
+    "manuscript_snapshot_version": "manuscript_cms_v009",
+    "paper_rebuild_check": "Clean extracted Tectonic/BibTeX build; all 11 main and 6 supplement pages match normalized page text.",
+    "schematic_generator_sha256": "2e5e2f91695146011c3ccf2f0d47a787ed80ab6b637dc1ce49088e6063bfddb4",
+    "source_map_sha256": "135dd20c37cb978a2b4a45b573a1b808d39b6d3b9e7e7935ddced0923a2b3692"
+  },
+  "unchanged": {
+    "numerical_csv_exports": 10,
+    "numerical_csv_exports_byte_identical_to_v1_0_0": true,
+    "result_figure_assets_byte_identical_to_v1_0_0": true,
+    "kernel_sources_configs_and_seed_fields_byte_identical_to_v1_0_0": true,
+    "existing_numerical_qualification_receipts_preserved": true,
+    "existing_independent_release_review_preserved_as_historical_v1_0_0_record": true
+  },
+  "archive_v1_0_0_sha256": "d42417824ad8edb5443751bda2eca535313f386bc5d79b0a94186a93011144a8",
+  "source_archive_sha256": "6d6e560de18cf27524be94dcd5381512ff644e8bde2b11ac7ed6803199efd279",
+  "clean_rebuild": {
+    "engine": "Tectonic 0.17.0",
+    "main_pages": 11,
+    "supplement_pages": 6,
+    "page_text_matches": true,
+    "main_pdf_sha256": "2eb54a11d793d3636ce4fbfb91bf9b8735d0153ad6516d4f19d374f13e9ea105",
+    "supplement_pdf_sha256": "824c48e3c7f1bade46d93a56d701ef86bd001c3026562fc930ee497e624dbddd"
+  }
+}

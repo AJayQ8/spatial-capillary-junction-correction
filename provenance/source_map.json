@@ -13,12 +13,47 @@
   ],
   "sources": [
     {
-      "release_path": "src/kernels/b2_d5_native.c",
-      "release_sha256": "16ca3ec6d7abc35f16e88cee9f1fe11594f2976984ec677531ff9ba658fdd720",
-      "retained_source_reference": "bench/b2_fast.c",
-      "role": "D5 native B2 operator",
-      "retained_source_sha256": "16ca3ec6d7abc35f16e88cee9f1fe11594f2976984ec677531ff9ba658fdd720",
+      "release_path": "scripts/build_kernels.py",
+      "release_sha256": "a1d2b1e91413eb6108a166f0e38c963f1d84c4b1fc40b38e4fada76271c50325",
+      "role": "Portable C kernel build entrypoint"
+    },
+    {
+      "release_path": "scripts/build_method_schematic.py",
+      "release_sha256": "2e5e2f91695146011c3ccf2f0d47a787ed80ab6b637dc1ce49088e6063bfddb4",
+      "retained_source_reference": "manuscript_cms_v009/figures/build_method_schematic.py",
+      "role": "Editable generator for the manuscript v009 method schematic; explanatory illustration, not simulation output.",
+      "retained_source_sha256": "2e5e2f91695146011c3ccf2f0d47a787ed80ab6b637dc1ce49088e6063bfddb4",
       "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "scripts/build_openphase_callers.py",
+      "release_sha256": "357d596f584930473659a79c525782d5a6fe3c4729e887debf7a959f65d05ae6",
+      "role": "Build retained OpenPhase callers against pinned upstream checkout"
+    },
+    {
+      "release_path": "scripts/run_b2_step.py",
+      "release_sha256": "76d961b8d210863588ccd57ee0acd0728ff40b9b7f64019f179fa3c662dcd922",
+      "role": "One-step B2 kernel entrypoint"
+    },
+    {
+      "release_path": "scripts/run_b2_trajectory.py",
+      "release_sha256": "f5579752da9fdd8124821cb14b5b9c05a6473bf66a50e3068958efda898ff004",
+      "role": "Small restartable H24 B2 time loop; not N20 moving-window reproduction"
+    },
+    {
+      "release_path": "scripts/run_grose_step.py",
+      "release_sha256": "f4bd2619c8d91f7b6850b6f0e524bb9f5b3ff6b6c3f4f0cd451fed73ab6c1204",
+      "role": "One-step Grose kernel entrypoint"
+    },
+    {
+      "release_path": "scripts/run_openphase_route.py",
+      "release_sha256": "68ebca01f0a8fd9508e32f020c25d7c13e8c20443da3897708edf0d2d9829820",
+      "role": "Run one selected OpenPhase route from included H24 field and recipe"
+    },
+    {
+      "release_path": "src/OpenPhase_LICENSE.txt",
+      "release_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "role": "License notice copied from the pinned upstream OpenPhase source"
     },
     {
       "release_path": "src/kernels/b2_d5_halo.c",
@@ -37,11 +72,11 @@
       "byte_identical_to_retained_source": true
     },
     {
-      "release_path": "src/kernels/b2_d9_native.c",
-      "release_sha256": "b216d9441fbc1de777b3a3acf6d137f4b2d6414b31013aa56b5cf3f5d2c9dc89",
-      "retained_source_reference": "bench/calibration_control_results/isotropic_stencil_diagnosis_v001/b2_nine_point_full_v001.c",
-      "role": "D9 native B2 operator",
-      "retained_source_sha256": "b216d9441fbc1de777b3a3acf6d137f4b2d6414b31013aa56b5cf3f5d2c9dc89",
+      "release_path": "src/kernels/b2_d5_native.c",
+      "release_sha256": "16ca3ec6d7abc35f16e88cee9f1fe11594f2976984ec677531ff9ba658fdd720",
+      "retained_source_reference": "bench/b2_fast.c",
+      "role": "D5 native B2 operator",
+      "retained_source_sha256": "16ca3ec6d7abc35f16e88cee9f1fe11594f2976984ec677531ff9ba658fdd720",
       "byte_identical_to_retained_source": true
     },
     {
@@ -61,19 +96,19 @@
       "byte_identical_to_retained_source": true
     },
     {
+      "release_path": "src/kernels/b2_d9_native.c",
+      "release_sha256": "b216d9441fbc1de777b3a3acf6d137f4b2d6414b31013aa56b5cf3f5d2c9dc89",
+      "retained_source_reference": "bench/calibration_control_results/isotropic_stencil_diagnosis_v001/b2_nine_point_full_v001.c",
+      "role": "D9 native B2 operator",
+      "retained_source_sha256": "b216d9441fbc1de777b3a3acf6d137f4b2d6414b31013aa56b5cf3f5d2c9dc89",
+      "byte_identical_to_retained_source": true
+    },
+    {
       "release_path": "src/kernels/grose_full_kernel.c",
       "release_sha256": "f677a12e39a64ac2b5953f82073c665789cbad65c7042b4f0857082fe5dd2826",
       "retained_source_reference": "bench/grose_complete_comparison_v001/grose_full_kernel_v002.c",
       "role": "Grose-Asimow source-based reconstructed C kernel",
       "retained_source_sha256": "f677a12e39a64ac2b5953f82073c665789cbad65c7042b4f0857082fe5dd2826",
-      "byte_identical_to_retained_source": true
-    },
-    {
-      "release_path": "src/openphase_h24_native_v004.cpp",
-      "release_sha256": "6c77924499b0667fda2f0b0dcda93bde8d8e426993a770359191486fd8d381c9",
-      "retained_source_reference": "bench/openphase_same_case_mapping_20261011/full_h24_comparison_v001/openphase_h24_full_v004.cpp",
-      "role": "OpenPhase native baseline caller; optional regularized branch is not the spatial correction",
-      "retained_source_sha256": "6c77924499b0667fda2f0b0dcda93bde8d8e426993a770359191486fd8d381c9",
       "byte_identical_to_retained_source": true
     },
     {
@@ -91,6 +126,24 @@
       "role": "OpenPhase half-step native caller; positive finite-dt admission guard derivative",
       "retained_source_sha256": "264e4c289ee3d9365ce2b8ccfc032551ea6d7cb090ae01bf11f923b2411965c9",
       "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/openphase_h24_native_v004.cpp",
+      "release_sha256": "6c77924499b0667fda2f0b0dcda93bde8d8e426993a770359191486fd8d381c9",
+      "retained_source_reference": "bench/openphase_same_case_mapping_20261011/full_h24_comparison_v001/openphase_h24_full_v004.cpp",
+      "role": "OpenPhase native baseline caller; optional regularized branch is not the spatial correction",
+      "retained_source_sha256": "6c77924499b0667fda2f0b0dcda93bde8d8e426993a770359191486fd8d381c9",
+      "byte_identical_to_retained_source": true
+    },
+    {
+      "release_path": "src/openphase_macos_metadata_compat_v001.h",
+      "release_sha256": "1604c6f3845db9f9821f03964eb38ce43baa38cec08df7a35cd715686073a68e",
+      "role": "Build-only Darwin compatibility preinclude for a Linux-specific executable-path query; no change to upstream OpenPhase source"
+    },
+    {
+      "release_path": "src/python/b2_api.py",
+      "release_sha256": "5b35599e1e3b0339a146af9a6f7e4232b443b1d4d6ff990f00665e2fd0e4d199",
+      "role": "Portable ctypes adapter for B2 C kernels"
     },
     {
       "release_path": "src/python/grose_full_kernel.py",
@@ -117,49 +170,9 @@
       "byte_identical_to_retained_source": false
     },
     {
-      "release_path": "src/openphase_macos_metadata_compat_v001.h",
-      "release_sha256": "1604c6f3845db9f9821f03964eb38ce43baa38cec08df7a35cd715686073a68e",
-      "role": "Build-only Darwin compatibility preinclude for a Linux-specific executable-path query; no change to upstream OpenPhase source"
-    },
-    {
-      "release_path": "src/OpenPhase_LICENSE.txt",
-      "release_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
-      "role": "License notice copied from the pinned upstream OpenPhase source"
-    },
-    {
-      "release_path": "src/python/b2_api.py",
-      "release_sha256": "5b35599e1e3b0339a146af9a6f7e4232b443b1d4d6ff990f00665e2fd0e4d199",
-      "role": "Portable ctypes adapter for B2 C kernels"
-    },
-    {
-      "release_path": "scripts/build_kernels.py",
-      "release_sha256": "a1d2b1e91413eb6108a166f0e38c963f1d84c4b1fc40b38e4fada76271c50325",
-      "role": "Portable C kernel build entrypoint"
-    },
-    {
-      "release_path": "scripts/run_b2_step.py",
-      "release_sha256": "76d961b8d210863588ccd57ee0acd0728ff40b9b7f64019f179fa3c662dcd922",
-      "role": "One-step B2 kernel entrypoint"
-    },
-    {
-      "release_path": "scripts/run_b2_trajectory.py",
-      "release_sha256": "f5579752da9fdd8124821cb14b5b9c05a6473bf66a50e3068958efda898ff004",
-      "role": "Small restartable H24 B2 time loop; not N20 moving-window reproduction"
-    },
-    {
-      "release_path": "scripts/run_grose_step.py",
-      "release_sha256": "f4bd2619c8d91f7b6850b6f0e524bb9f5b3ff6b6c3f4f0cd451fed73ab6c1204",
-      "role": "One-step Grose kernel entrypoint"
-    },
-    {
-      "release_path": "scripts/build_openphase_callers.py",
-      "release_sha256": "357d596f584930473659a79c525782d5a6fe3c4729e887debf7a959f65d05ae6",
-      "role": "Build retained OpenPhase callers against pinned upstream checkout"
-    },
-    {
-      "release_path": "scripts/run_openphase_route.py",
-      "release_sha256": "68ebca01f0a8fd9508e32f020c25d7c13e8c20443da3897708edf0d2d9829820",
-      "role": "Run one selected OpenPhase route from included H24 field and recipe"
+      "release_path": "tests/qualify_b2_step_cli.py",
+      "release_sha256": "c7783f11660fdd7e61f06766b8a21f61feedf0c0b9501b008245186e2a00b9a3",
+      "role": "Bounded H24/N20 one-step CLI qualification and recipe mismatch guard test"
     },
     {
       "release_path": "tests/qualify_kernels.py",
@@ -175,11 +188,6 @@
       "release_path": "tests/run_release_smoke.py",
       "release_sha256": "e67b229812dd92629587d8211928c65e400eb66cc426686fb6a7d7313707fdce",
       "role": "Bounded local release qualification orchestration"
-    },
-    {
-      "release_path": "tests/qualify_b2_step_cli.py",
-      "release_sha256": "c7783f11660fdd7e61f06766b8a21f61feedf0c0b9501b008245186e2a00b9a3",
-      "role": "Bounded H24/N20 one-step CLI qualification and recipe mismatch guard test"
     }
   ],
   "configs": [
