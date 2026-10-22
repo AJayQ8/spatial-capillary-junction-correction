@@ -37,8 +37,18 @@ byte-for-byte. The schematic is an illustration, not simulated data.
 ## Numerical reproduction
 
 The [simulation guide](docs/SIMULATIONS.md) describes kernel compilation,
-short verification runs, frozen inputs, case configurations and full-horizon
-commands. A C compiler is needed for the B2 and reconstructed Grose kernels.
+short verification runs, frozen inputs and case configurations. To build and
+check the B2/Grose kernels:
+
+```sh
+python scripts/build_kernels.py
+python tests/qualify_kernels.py
+```
+
+The portable B2 trajectory driver covers the fixed H24 domain. The N20 moving
+window and full Grose production observer harness are not ported; their kernels,
+initial data and retained measurements are provided. OpenPhase has the frozen
+full-schedule route commands in the simulation guide. A C compiler is needed for the B2 and reconstructed Grose kernels.
 The OpenPhase caller additionally requires the pinned public OpenPhase source
 and its dependencies; no compiled libraries are bundled.
 
