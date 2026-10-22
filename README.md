@@ -1,22 +1,14 @@
 # Spatial capillary correction for driven junctions
 
-Research software and reproducibility material for **A spatial capillary
-correction for driven junction motion in double-obstacle multiphase-field
-simulations**, by Ayas Alzanki.
+Code, benchmark inputs and figure data for **A spatial capillary correction for driven junction motion in double-obstacle multiphase-field simulations**, by Ayas Alzanki.
 
-[Manuscript](paper/manuscript.pdf) · [Supplement](paper/supplement.pdf) ·
-[Simulation guide](docs/SIMULATIONS.md) · [Reproducibility](docs/REPRODUCIBILITY.md)
+[Manuscript](paper/manuscript.pdf) · [Supplement](paper/supplement.pdf) · [Simulation guide](docs/SIMULATIONS.md)
 
-The correction extends a ternary-support signal into a spatial neighborhood and
-multiplies the capillary contribution while retaining the bulk-driving term.
-The retained comparisons include B2 driven fronts, interacting junction pairs,
-a declared Grose–Asimow reconstruction, and transfer to OpenPhase without
-refitting the correction strength or radius. The method is assessed in the
-specific driven geometries and numerical recipes reported in the paper.
+The method extends a ternary-phase signal into a neighborhood of each junction and amplifies the capillary contribution without changing the bulk-driving term. The examples cover driven fronts, interacting junction pairs, a reconstruction of the Grose–Asimow method, and an implementation in OpenPhase using the same correction strength and relative radius.
 
 ![Spatial correction schematic](figures/method_schematic.png)
 
-## Quick start: reproduce figures
+## Rebuild the figures
 
 Python 3.10 or newer is required. From the repository root:
 
@@ -29,66 +21,41 @@ python scripts/build_figures.py
 python scripts/build_method_schematic.py --output-dir build/figures
 ```
 
-Outputs go to `build/figures/`. This rebuild reads the ten included CSV exports
-and requires no private workspace, remote dataset or simulation run. The retained
-Matplotlib 3.9.4 check reproduced all five result/graphical-abstract PNG files
-byte-for-byte. The schematic is an illustration, not simulated data.
+The scripts read the included CSV files and write to `build/figures/`. The method schematic is an illustration. It does not represent simulation data.
 
-## Numerical reproduction
+## Run the calculations
 
-The [simulation guide](docs/SIMULATIONS.md) describes kernel compilation,
-short verification runs, frozen inputs and case configurations. To build and
-check the B2/Grose kernels:
+Start with the [simulation guide](docs/SIMULATIONS.md). To compile and check the B2 and reconstructed Grose kernels:
 
 ```sh
 python scripts/build_kernels.py
 python tests/qualify_kernels.py
 ```
 
-The portable B2 trajectory driver covers the fixed H24 domain. The N20 moving
-window and full Grose production observer harness are not ported; their kernels,
-initial data and retained measurements are provided. OpenPhase has the frozen
-full-schedule route commands in the simulation guide. A C compiler is needed for the B2 and reconstructed Grose kernels.
-The OpenPhase caller additionally requires the pinned public OpenPhase source
-and its dependencies; no compiled libraries are bundled.
+The B2 trajectory driver supports the fixed-domain H24 case. The N20 moving-window driver and complete Grose measurement pipeline are not included; their kernels, initial fields and reported measurements are supplied. OpenPhase run commands, inputs and upstream dependencies are described in the guide.
 
-Short release checks exercise the exported implementations. They are not a
-fresh full-horizon rerun of the paper. Long benchmark calculations should be
-planned for the resources available on the user's machine.
+The release tests check kernel updates and selected restart behavior. They do not repeat the full benchmark calculations. See [Reproducibility](docs/REPRODUCIBILITY.md) for details.
 
-## Repository contents
+## Contents
 
-| Path | Purpose |
+| Directory | Contents |
 | --- | --- |
-| `src/` | Numerical kernels and OpenPhase insertion caller. |
-| `scripts/` | Portable build/run entrypoints, figure generation and file verification. |
-| `configs/` | Frozen case settings and observation conventions. |
-| `inputs/` | Compact initial fields and input provenance. |
-| `data/figure_data/` | Ten frozen CSV exports used by figures and tables. |
-| `figures/` | Retained manuscript figures and graphical abstract. |
-| `paper/` | Manuscript, supplement, bibliography, editable TeX and style files. |
-| `tests/` | Short numerical release qualification. |
-| `provenance/` | Source mapping, integrity hashes and qualification records. |
-
-The public package omits machine-specific compute infrastructure and large
-historical checkpoint archives. See [reproducibility levels](docs/REPRODUCIBILITY.md)
-for what can be rebuilt directly and what requires a new simulation.
+| `src/` | B2 and Grose kernels, Python helpers and OpenPhase callers. |
+| `scripts/` | Build and run commands, figure scripts and checksum verification. |
+| `configs/` | Benchmark parameters and observation settings. |
+| `inputs/` | Initial fields and OpenPhase observation schedules. |
+| `data/figure_data/` | Ten CSV datasets used in the figures and tables. |
+| `figures/` | Figures and graphical abstract. |
+| `paper/` | Manuscript, supplement and editable LaTeX sources. |
+| `tests/` | Software checks. |
+| `provenance/` | File hashes, source mapping and test records. |
 
 ## Scope
 
-This is a finite-recipe accuracy study. It does not establish a universal
-parameter rule, a causal junction-angle mechanism or an optimized accuracy–cost
-frontier. The late OpenPhase long-pair shape miss and empty-boundary outcomes
-are retained. The Grose–Asimow implementation is a source-based reconstruction,
-not the authors' executable. The optional local-memory rule is a separate
-history-dependent variant.
+The paper demonstrates accuracy improvements in the tested driven-junction settings. It does not provide a universal parameter rule or an optimized accuracy–cost comparison. The data include a late OpenPhase shape error outside the selected tolerance and observations with no remaining boundary. The Grose–Asimow comparison uses our reconstruction of the published equations. The local-memory rule is an optional, history-dependent extension.
 
 ## Citation and license
 
-Use [CITATION.cff](CITATION.cff) to cite this software version, and cite the
-accompanying manuscript when using its results. The initial release is
-`v1.0.0`. Its Zenodo archival DOI is pending; no DOI is asserted here.
+Use [CITATION.cff](CITATION.cff) to cite version `1.0.1`, and cite the accompanying manuscript when using its results. A Zenodo DOI will be added when the archive is published.
 
-Original material is licensed under GPL-3.0-only. Elsevier LaTeX style files
-retain their LPPL licenses, and separately obtained dependencies retain their
-own licenses. See [LICENSE](LICENSE) and [THIRD_PARTY.md](THIRD_PARTY.md).
+Original material is licensed under GPL-3.0-only. The Elsevier LaTeX files retain their LPPL licenses; other dependencies retain their own licenses. See [LICENSE](LICENSE) and [THIRD_PARTY.md](THIRD_PARTY.md).

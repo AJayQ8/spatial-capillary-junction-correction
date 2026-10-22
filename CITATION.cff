@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite this software release and the associated manuscript when using this work."
 type: software
 title: "Spatial capillary correction for driven multiphase-field junctions"
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-10-22
 url: "https://github.com/AJayQ8/spatial-capillary-junction-correction"
 repository-code: "https://github.com/AJayQ8/spatial-capillary-junction-correction"

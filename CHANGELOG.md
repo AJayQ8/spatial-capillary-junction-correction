@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.1 — 2026-10-22
+
+- Center the Figure 1(c) title and improve supplement table spacing.
+- Link the manuscript to the public code and data repository.
+- Simplify the documentation. Numerical code, inputs and results are unchanged.
+
 ## v1.0.0 — 2026-10-22
 
 Initial public research release accompanying *A spatial capillary correction
