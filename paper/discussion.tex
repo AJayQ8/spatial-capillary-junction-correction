@@ -1,0 +1,29 @@
+\section{Discussion}
+The demonstrated benefit is better junction shapes and kinetics at selected finite interface widths. The matched-front test separates this improvement from refinement or a changed clock. Interacting calculations show why whole-boundary shape matters in addition to preinteraction speed. The cold thinner-interface comparison supplies one useful accuracy--cost point, and the OpenPhase transfer shows that the prescription can retain a substantial benefit outside the original force assembly.
+
+The multiplier acts over a neighborhood of ternary coexistence, including adjoining binary segments. It can therefore alter the relation between core motion and the surrounding interface. This motivates the construction but does not derive a selected junction geometry or identify a unique cause of every improvement. In particular, the multiplier scales curvature contributions as well as profile restoration. It is not equivalent to normal-only stabilization \citep{feyen2023}, and it does not generally preserve forced equilibria of the original model.
+
+Local memory addresses a second issue: a correction useful for separated junction neighborhoods need not remain equally useful after those neighborhoods interact. Suppressing incident sources and retaining that decision can reduce postinteraction shape errors without globally switching off unrelated junctions. The whole correction already succeeds in the principal matched interaction case. Memory is consequently an optional refinement for additional shape margin, rather than a default requirement.
+
+Conventional choices remain adequate in some regimes. Retained alternative-angle and asymmetric controls include cases where an economical native discretization performs well on the requested observables. The correction is not established as a universal replacement for refinement, mobility selection or existing high-drive models. Its useful setting is one in which finite-width junction error remains important and the chosen prescription has been checked against a relevant reference.
+
+Three limitations matter for applying the method. First, strength and radius are empirical. The sampled perturbations and transfer reduce concern about an isolated fit but do not supply automatic parameter selection. Second, the demonstrations concern planar compact-support fields, common pair mobility and prescribed forcing. They do not establish performance for anisotropic surface stiffness, diffusion-coupled transformations, three-dimensional networks or smooth-tailed phase fields. Third, the evidence is finite-setting accuracy evidence. A retained profile/mesh comparison gives $0.002096W$ discrepancy against a $0.002W$ target and remains outside that target. The added OpenPhase check compares two timesteps on one grid and therefore provides sensitivity evidence, not a convergence rate. Width, grid and timestep are not independently taken to zero throughout the campaign, so the reported gain is not a continuum-convergence result.
+
+The contribution relative to previous work is a distinct improvement on a defined task. The driven-junction benchmark \citep{hoffrogge2025}, force allocation and profile correction \citep{grose2022}, normal-profile stabilization \citep{feyen2023} and coarse-grid preconditioning \citep{sakane2026} address related parts of quantitative phase-field simulation. The spatial construction adds an implementable option, supported here by matched accuracy gains, interacting-boundary shapes and fixed-prescription OpenPhase transfer.
+
+\section{Conclusions}
+A neighborhood maximum of ternary coexistence localizes capillary amplification in compact-support multiphase-field calculations. At matched numerical settings it substantially improves the migration speed and aligned shape of a strongly driven unequal-energy junction. In cold interacting-junction calculations it reduces absolute whole-boundary shape error, while optional component memory supplies additional case-dependent accuracy after neighborhood overlap.
+
+The same whole-correction prescription improves motion and disappearance timing in OpenPhase without refitting strength or relative radius. A remaining late shape error shows why speed and event timing cannot alone establish morphological accuracy. The method offers a demonstrated correction for the tested finite-width driven-junction regimes, with a simple whole-neighborhood form and an optional history-dependent refinement.
+
+\section*{Data and code availability}
+Numerical data underlying the figures, figure-generation code and recipe documentation are included in the accompanying source archive. A versioned Zenodo deposit of the study's reproducibility package is planned; its permanent DOI will be added before submission. OpenPhase is publicly available \citep{openphase}; the source revision and insertion point used here are specified in Section~\ref{sec:openphase} and the Supplementary Material.
+
+\section*{Supplementary material}
+The Supplementary Material provides force-channel construction, stencils, the component-memory algorithm, clock calibration, benchmark settings and reconstruction conventions, including the scope of the published-method comparison.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+ChatGPT was used to assist with this work, including coding and debugging. The author reviewed and edited the AI-assisted material and takes full responsibility for the content of this article.
+
+\section*{Acknowledgments}
+The author acknowledges the Kuwait Institute for Scientific Research (KISR) for institutional affiliation and general research support.

@@ -1,0 +1,56 @@
+\documentclass[a4paper]{cas-sc}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,placeins,microtype}
+\setlength{\emergencystretch}{2em}
+\microtypesetup{protrusion=false}
+\setlength{\textfloatsep}{20pt plus 3pt minus 2pt}
+\setlength{\intextsep}{20pt plus 3pt minus 2pt}
+\setlength{\floatsep}{18pt plus 3pt minus 2pt}
+\makeatletter
+\@fleqnfalse
+\@mathmargin\@centering
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {18pt plus 3pt minus 2pt}{9pt}%
+  {\sectionfont\raggedright\hst[13pt]}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {14pt plus 3pt minus 2pt}{6pt}%
+  {\ssectionfont\raggedright}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {12pt plus 2pt minus 2pt}{5pt}%
+  {\sssectionfont\raggedright}}
+\makeatother
+\graphicspath{{figures/}}
+\hypersetup{pdftitle={A spatial capillary correction for driven junction motion in double-obstacle multiphase-field simulations},pdfauthor={Ayas Alzanki},colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\newcommand{\ph}{\boldsymbol{\phi}}
+\newcommand{\RMS}{\mathrm{RMS}}
+\newcommand{\HH}{d_{\mathrm H}}
+\newcommand{\Dt}{\Delta t}
+\ExplSyntaxOn
+\cs_set:Npn \__first_footerline: { \small\sffamily A.~Alzanki }
+\ExplSyntaxOff
+\begin{document}
+\shorttitle{Spatial capillary correction for driven junctions}
+\shortauthors{A. Alzanki}
+\title[mode=title]{A spatial capillary correction for driven junction motion in double-obstacle multiphase-field simulations}
+\author[1]{Ayas Alzanki}[orcid=0009-0004-3121-3778]
+\cormark[1]
+\ead{azanki@kisr.edu.kw}
+\affiliation[1]{organization={Energy and Building Research Center, Kuwait Institute for Scientific Research (KISR)},addressline={P.O. Box 24885},city={Safat},postcode={13109},country={Kuwait}}
+\cortext[1]{Corresponding author.}
+\begin{abstract}
+Artificial interface thickness can produce substantial errors in the motion and shape of strongly driven multiphase junctions, even when binary-interface motion is accurately calibrated. We introduce a spatial capillary correction for compact-support double-obstacle models. A normalized ternary-product signal identifies junctions, and its maximum over a neighborhood sets a multiplier on the capillary contribution while leaving the bulk driving term unchanged. An optional component-memory rule suppresses selected sources after junction neighborhoods overlap. At matched width, grid and timestep, the correction reduces migration-speed error from 16.01\% to 0.45\% and aligned interface-shape RMS error from $0.1051W$ to $0.0060W$ in a driven unequal-energy benchmark. In a cold interacting-junction calculation, the whole correction reduces worst sampled Hausdorff errors from $0.1061W$ and $0.1408W$ to $0.02694W$ and $0.03058W$; local memory further reduces them to $0.01399W$ and $0.01814W$. Porting the fixed prescription to OpenPhase reduces migration-speed error from 25.53\% to 0.98\% and disappearance-time errors to approximately 1\%, although one late shape sample remains outside the chosen tolerance. The results establish a practical accuracy benefit in the tested driven-junction regimes and distinguish the simpler spatial correction from the additional, case-dependent benefit of interaction memory.
+\end{abstract}
+\begin{keywords}
+Multiphase-field \sep Triple junction \sep Double-obstacle potential \sep Interface thickness \sep Numerical accuracy \sep Grain-boundary motion
+\end{keywords}
+\maketitle
+\hypersetup{pdfauthor={Ayas Alzanki}}
+\input{introduction}
+\input{methods}
+\input{results}
+\input{discussion}
+{\raggedright
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+}
+\end{document}

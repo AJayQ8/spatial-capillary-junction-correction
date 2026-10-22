@@ -1,0 +1,195 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,graphicx,microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={Supplementary material: A spatial capillary correction for driven junction motion},pdfauthor={Ayas Alzanki}}
+\renewcommand{\thepage}{S\arabic{page}}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thetable}{S\arabic{table}}
+\newcommand{\ph}{\boldsymbol{\phi}}
+\title{Supplementary material\\[5pt]\large A spatial capillary correction for driven junction motion in double-obstacle multiphase-field simulations}
+\author{Ayas Alzanki\\[3pt]\small Energy and Building Research Center\\\small Kuwait Institute for Scientific Research (KISR)\\\small P.O. Box 24885, Safat 13109, Kuwait\\\small \texttt{azanki@kisr.edu.kw}\\\small ORCID: \href{https://orcid.org/0009-0004-3121-3778}{0009-0004-3121-3778}}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Force channels and constrained update}
+The phase order is $(0,1,2)$. Pair matrices for the principal driven cases are
+\begin{equation}
+ \gamma=\begin{pmatrix}0&1&1\\1&0&q\\1&q&0\end{pmatrix},
+ \quad \Delta f=\begin{pmatrix}0&-p&-p\\p&0&0\\p&0&0\end{pmatrix},
+ \quad M=\begin{pmatrix}0&1&1\\1&0&1\\1&1&0\end{pmatrix}.
+\end{equation}
+The diagonal entries have no dynamical role. Positive $\Delta f_{0j}$ favors phase 0 in the implemented antisymmetric pair sum. The B2 construction follows the force decomposition of Hoffrogge et al.\ \citep{hoffrogge2025}, with the explicit activity and constraint choices given here.
+
+At each grid node, compute a discrete Laplacian for each phase and set
+\begin{equation}
+ I_i=\mathbf1_{\{\phi_i>0\ {\rm or}\ \Delta_h\phi_i\ne0\}},
+ \qquad N_a=\sum_i I_i .
+\end{equation}
+For each unordered pair $i<j$ with $I_iI_j=1$, calculate $K_{ij}$, $J_{ij}$ and $b_{ij}$ from the main text. Set
+\begin{align}
+ Q^C_{ij}&=M_{ij}(-\gamma_{ij}K_{ij}+J_{ij}),\\
+ Q^B_{ij}&=M_{ij}b_{ij}\Delta f_{ij}.
+\end{align}
+Add each increment to phase $i$ and its negative to phase $j$. This gives $\sum_i C_i=\sum_i B_i=0$ before constraint handling. There is no extra $1/N_a$ outside the pair sum.
+
+The spatial correction is evaluated in the order
+\begin{equation}
+ P=((27\phi_0)\phi_1)\phi_2,\qquad
+ H=\operatorname{max}_{r}[(1-S)P],\qquad
+ \widetilde{\mathbf R}=\mathbf R+27H(\mathbf R-\mathbf B).
+\end{equation}
+Here $r=\rho/h$ is the integer square-filter radius and nearest-edge extension is used. Thus the factor 27 normalizing $P$ and strength $\chi=27$ are separate factors, not alternate definitions of one coefficient.
+
+The Euclidean projection of a tentative fraction vector $\mathbf z$ has the form
+\begin{equation}
+ \Pi_{\mathcal D}(\mathbf z)_i=\max(z_i-\lambda,0),
+ \qquad \sum_i\max(z_i-\lambda,0)=1.
+\end{equation}
+The developed-front comparison retains its original sorted Euclidean projector. Later compact-support implementations use a roundoff-safe active-rank decision, write inactive entries as exact zero, and assign the final unit-sum residual to the largest fraction. This avoids interpreting arithmetic-scale positive remnants as physical component support. It is not a finite physical cutoff. The OpenPhase test retains OpenPhase's own native normalization instead of this projector.
+
+\section{Spatial stencils and boundary treatment}
+The five-point stencil is
+\begin{equation}
+ \Delta_5 u=\frac{u_E+u_W+u_N+u_S-4u_0}{h^2}.
+\end{equation}
+The standard nine-point stencil used in the matched cold interaction calculations is
+\begin{equation}
+ \Delta_9u=
+ \frac{4(u_E+u_W+u_N+u_S)
+       +u_{NE}+u_{NW}+u_{SE}+u_{SW}-20u_0}{6h^2}.
+\end{equation}
+It is a second-order stencil, with an isotropic leading interior truncation term, not a new fourth-order discretization. Spatial isotropy is an established numerical issue \citep{tang2024}. Edge-copy ghosts impose zero normal gradients. The filter and component detector use their stated square-grid geometry, which differs from a disk or a Euclidean-distance threshold.
+
+The translating-front simulations recenter by integer rows when needed. Replaced rows are pure bulk rows; laboratory coordinates and phase-area accounts include the recorded row offsets. This keeps the advancing front within the moving window. Grain-consumption simulations use the full $W\times24W$ field without an internal wall between the two test pairs.
+
+\section{Local suppression and persistence}
+Let $L(\mathbf x)$ label the eight-connected components of $\{P>0\}$, with zero for background and $n_c$ nonzero component labels. At a controller time, form
+\begin{equation}
+ L_{\min}(\mathbf x)=
+ \begin{cases}
+ L(\mathbf x),&L(\mathbf x)>0,\\
+ n_c+1,&L(\mathbf x)=0.
+ \end{cases}
+\end{equation}
+An overlap center satisfies
+\begin{equation}
+ O(\mathbf x)=
+ \mathbf1_{\{\max_r L(\mathbf x)>\min_r L_{\min}(\mathbf x)\}}.
+\end{equation}
+This predicate detects at least two different nonzero labels in a square window of side $2r+1$. Dilate $O$ by the same square window. Every current support component touching this incident neighborhood is selected, including all components involved in a multiple overlap.
+
+Suppression starts from an empty mask. Once a controller detects overlap, select its incident components. At each later Euler step, label the new strict support and select every component touching the preceding suppression mask dilated by one eight-neighbor cell. At controller times, union these inherited components with newly incident components. Write suppression over each selected component's current support, and nowhere else. A vanished component leaves no current mask; a subsequent nearby component can still inherit by the stated adjacency rule.
+
+The controller cadence in the cold $\eta=0.08W$ interaction comparison is $0.0002$ in physical time. It is evaluated at the first discrete state at or after each target, before the next Euler update. Newly incident components are not detected at every step. The per-step inheritance operation is separate. A continuation must retain the suppression mask, latch state, controller cursor and clock alongside the phase fractions. The rule is therefore not Markovian in the phase fractions alone.
+
+\section{Case settings and clock conventions}
+Table~\ref{tab:recipes} lists the principal settings. Ratios $\eta/W$ and $h/W$ are given; raw steps use the nondimensional solver time. The same strength prescription $\chi=27$, $\rho=\eta$ is used unless a sensitivity test changes one of them.
+
+\begin{table}[htbp]
+\caption{Principal numerical recipes, including the two fixed-grid OpenPhase timestep levels. D5 and D9 denote five- and nine-point Laplacians. The developed-front and strength/radius tests start from retained states; the other listed comparisons start cold.}
+\label{tab:recipes}
+\centering\small
+\begin{tabular}{lrrrrl}
+\toprule
+Case & $q$ & $p$ & $\eta/W$ & $h/W$ & Raw step / stencil\\
+\midrule
+Developed matched front & $\sqrt3$ & $-50$ & .10 & .005 & $10^{-7}$ / D5\\
+Cold corrected front & $\sqrt3$ & $-50$ & .10 & .010 & $4\,10^{-7}$ / D5\\
+Cold thin native front & $\sqrt3$ & $-50$ & .02 & .005 & $1.25\,10^{-6}$ / D5\\
+Cold matched interaction & 1.5 & $-30$ & .08 & .010 & $4\,10^{-7}$ / D9\\
+Doubled-step interaction & 1.5 & $-30$ & .08 & .010 & $8\,10^{-7}$ / D9\\
+OpenPhase interaction & 1.5 & $-30$ & .08 & .010 & $10^{-6}$ / native\\
+OpenPhase half-step interaction & 1.5 & $-30$ & .08 & .010 & $5\,10^{-7}$ / native\\
+Strength/radius tests & $\sqrt3$ & $-50$ & .10 & .010 & $4\,10^{-7}$ / D5\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The developed matched front uses the same original native time-one state for both routes and advances a further $0.25$, with 26 saved observations at relative spacing $0.01$. Its common nominal clock is retained. The field has $200\times800$ cells, and the correction radius is twenty cells. This is a continuation comparison, not a cold-start cost result.
+
+Cold front comparisons initialize each width on its own grid from the sharp graph and compact profiles. Each includes a planar control to solver time $0.25$. Its clock factor is $a=V_{\rm target}/V_{\rm planar}$, with physical time $t=s/a$. The junction is integrated far enough to cover the nominal and calibrated horizons. Saved observations use actual step times, not artificially exact target timestamps.
+
+The cold interaction field contains $100\times2400$ cells. Short and long compact traveling-hat patches occupy rows $[225,1125)$ and $[1125,2325)$, respectively, within an otherwise pure-phase-0 domain. At their joining location the field is exactly phase 0. Nominal pair separations are $7W$ and $10W$. The nine-point $4\times10^{-7}$ runs use $a=1.0285898885169724$; the doubled-step runs use $a=1.0287179095195225$. The OpenPhase native and corrected runs at $10^{-6}$ share $a=1.028859975087663$ and complete 123463 updates to cover physical time $0.12$. The $5\times10^{-7}$ pair uses $a=1.0287117246774256$ and completes 246891 updates over the same physical horizon.
+
+These factors come from binary motion. The correction vanishes identically in a globally binary field. Changing only the capillary term by $m$ is not a clock correction, while multiplying the entire equation by $a$ is. No junction output is used to infer $a$.
+
+\section{Initial geometry and sharp reference}
+For the translating branch, write the half-graph as $g(x)$ over $0\leq x\leq W/2$ and reflect about $W/2$. In the nondimensional benchmark coordinates it satisfies
+\begin{equation}
+ g''=v(1+g'^2)-p(1+g'^2)^{3/2},
+ \qquad g(0)=g'(0)=0,\quad
+ g'(W/2)=-\cot(\theta/2).
+\end{equation}
+For $\theta=60^\circ$ and $p=-50$, the limiting translating speed is $v=-100$. The graph is evaluated using high-accuracy integration or an independently evaluated nonsingular branch construction. The finite-step observations use the same immutable reference values for the compared routes.
+
+A cold graph initializer evaluates $d_0=(y-g(x))/\sqrt{1+g'(x)^2}$. The two grain coordinates combine $-d_0$ with their respective side of the central grain boundary through a minimum construction. Applying the compact profile to these coordinates, normalizing the fractions and projecting gives the initial ternary field. This is a graph-normal distance approximation, not the exact signed distance to an arbitrary curve.
+
+The opposed-front consumption construction uses two translating-hat interfaces. Before contact, the reference follows their known translating branches. After contact, the remaining closed interface is evolved by the prescribed forced-curvature law. Reference construction is checked separately from the phase-field implementation, including forced-circle controls and spatial/time-resolution comparisons. The comparison does not infer a reference shape by fitting the phase-field output.
+
+For graph RMS, the same 92 interior physical $x$ positions are used at every resolution and in both methods. A profile is interpolated onto those positions before maximum alignment. A supplemental boundary-inclusive 198-point observation of the matched developed case gives RMS values $0.11779W$ for native and $0.01685W$ for corrected, showing a remaining boundary contribution while preserving the improvement. It is a different sampling set and is not substituted for the main metric.
+
+For grain consumption, each short/long pair has five prescribed shape observations. Full boundary coordinates are retained in physical position; there is no translation alignment. Segment-sampling brackets apply only to reconstruction/readout sampling. Event brackets use the original 1\%-of-initial-sharp-area target and the stored sharp-reference time interval. Observables and finite tolerance choices are fixed before comparing outcomes.
+
+\section{Scope of the Grose--Asimow reconstruction}
+The comparator is reconstructed from the operative force equations, amplification, recursive transfer, finite-difference correction and profile correction of Grose and Asimow \citep{grose2022}. It does not substitute B2 forcing or the present halo. The pair-force sums use their Eqs.~(17)--(18); a conflicting sign in the printed segregation expression is not used. Their Eqs.~(32)--(34) supply weighted bulk-force allocation; a vanishing weighted drive gives zero bulk force. Amplification is pair-selective. Both $A_\sigma=0$ and $1$ are declared tests.
+
+The recursion eliminates fractions at zero crossings and recalculates center-dependent forces while holding macro-step neighbors fixed. Simultaneous crossings use a sixteen-machine-epsilon tie convention. The finite-difference correction follows the compact sine-profile formulas. Grouped phase-only restoration is a published option; the implementation restores the phase group and redistributes the constituent grain fractions.
+
+The normal-extension implementation uses three outward markers separated by $h/\sqrt2$, bilinear sampling and a first eligible inward reference. Beyond the initial quarter-cell trace, tracing continues through exact quarter-index events for the binary64 normal, nearest-node selection and edge-copy clamping. No arbitrary short tracing cutoff remains. No-reference and normalization exceptions are counted and retained. Not every production exception has a separately manufactured independent witness, so equality to an author executable is not claimed.
+
+The comparison uses the new $q=1.5$, $p=-30$ interacting geometry, the same width and grid, independent binary clocks and common geometric readout. The selected $A_\sigma=1$ full/half raw steps are $8\times10^{-7}$ and $4\times10^{-7}$. Profile, force and event checks support this declared reconstruction. They do not resolve every under-specified author convention or establish the best settings for the method. Recorded driver times include guards, diagnostics and output and are not used for an optimized method-to-method speed claim.
+
+\section{OpenPhase insertion and remaining numerical limits}
+The OpenPhase test scales existing antisymmetric capillary \texttt{FieldsDot.value1} entries after native capillary-increment calculation and before driving-force merging. The insertion follows the \texttt{DoubleObstacle} module's \texttt{CalculatePhaseFieldIncrements} call. The second increment channel is checked to be zero at this point. Native sparse support, pair mobilities, interfacial energies, bulk terms and increment normalization are retained. The multiplier does not add new phase-pair storage entries. This is an OpenPhase-specific application of the spatial prescription, not algebraic identity with the B2 operator.
+
+The $10^{-6}$ raw timestep, cold initial field and observation schedule match the retained native case. A second native/corrected pair uses the same cold field and physical horizon at $5\times10^{-7}$, with its own binary-clock factor $a=1.0287117246774256$; the original pair uses $a=1.028859975087663$. No OpenPhase strength or radius is fitted after observation. Its common curvature-extrapolation warning occurs in both native and corrected configurations. The remaining long-pair shape miss is retained as a finite-recipe discrepancy; the later passing sample does not erase it.
+
+Table~\ref{tab:openphase-half} reports the half-step readout. Signed speed error is $(v-v_*)/|v_*|$ for the negative target, so a negative value means faster motion. The $T_{99}$ error ranges retain both trajectory-event and stored sharp-reference brackets. For shape, the maximum is over nonempty boundaries; empty-boundary outcomes are counted separately. All reported scalar invariants pass. The half-step pair has 47 saved fields per route and reaches the same $0.12$ physical-time horizon. This is a fixed-grid, two-level sensitivity check only; it does not estimate an asymptotic convergence order.
+
+\begin{table}[htbp]
+\caption{OpenPhase fixed-grid half-step sensitivity. Shape maxima are in units of $W$ and are accompanied by the number of empty-boundary observations among five samples.}
+\label{tab:openphase-half}
+\centering\scriptsize
+\begin{tabularx}{\linewidth}{l c c c >{\raggedright\arraybackslash}X}
+\toprule
+Route & Signed speed error & Short $T_{99}$ error & Long $T_{99}$ error & Shape samples: short; long\\
+\midrule
+Native & $-25.595\%$ & 15.736--16.031\% & 17.415--17.620\% & Short max 0.46894, 2 empty; long max 0.83194, 3 empty\\
+Whole correction & $-0.982\%$ & 0.787--1.085\% & 0.785--0.993\% & Short 5/5 pass (max 0.04572); long 4/5 (max 0.05859; bracket [0.05853,0.05864]$W$); none empty\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Saved-field outer-profile geometry}
+The additional geometric readout uses the independently authenticated fields from the B2 matched-front and OpenPhase cold-interaction cases. B2 fits the two symmetric outer arms separately over four windows whose distance from the junction midline is $[0.12,0.20]$, $[0.18,0.26]$, $[0.24,0.32]$ and $[0.30,0.38]W$; the reported angle is the included angle of the fitted lines. OpenPhase fits upper and lower outer-profile branches on both sides of each short/long pair at the saved frame nearest physical time $0.04$, within the preinteraction speed window $[0.03,0.05]$. Its profile-corner angle is $180^\circ$ minus the two fitted branch angles to the horizontal. These distinct descriptors are not three-phase core or Herring angles. For every listed fit, sampling points lie outside the diffuse ternary core and the support of $H$; the sharp comparator is fit over the same window. The four-window ranges therefore describe the saved outer profiles, not a causal angle-selection law.
+
+\begin{table}[htbp]
+\caption{Outer-profile angles and signed speed errors from the same saved-field cases. Signed errors use $(v-v_*)/|v_*|$; negative means faster motion for these negative targets. B2 angles are two-arm included angles; OpenPhase angles are upper/lower profile-corner angles. Sharp ranges are obtained from same-window sharp-reference fits. Angles are in degrees.}
+\label{tab:outer-geometry}
+\centering\scriptsize
+\begin{tabularx}{\linewidth}{l l r c >{\centering\arraybackslash}X}
+\toprule
+Case and raw step & Route & Signed speed error & Measured outer angle & Sharp same-window angle\\
+\midrule
+B2, $10^{-7}$ & Native & $+16.014\%$ & 72.835--72.842 & 60.000\\
+B2, $10^{-7}$ & Corrected & $+0.452\%$ & 60.093--60.094 & 60.000\\
+OpenPhase, $10^{-6}$ & Native & $-25.532\%$ & 63.918--63.925 & 82.819--82.997\\
+OpenPhase, $10^{-6}$ & Whole correction & $-0.983\%$ & 82.251--82.480 & 82.819--82.997\\
+OpenPhase, $5\times10^{-7}$ & Native & $-25.595\%$ & 63.882--63.889 & 82.819--82.997\\
+OpenPhase, $5\times10^{-7}$ & Whole correction & $-0.982\%$ & 82.252--82.482 & 82.819--82.997\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+In B2 the angle is formed from the two interface arms; in OpenPhase it summarizes each outer grain profile rather than a three-phase junction angle. Native speed errors have opposite signs across the implementations. The movement of these profile descriptors toward their same-window sharp comparators is a descriptive geometric observation and cannot identify a common numerical-drag mechanism or make either angle a causal selector.
+
+The four strength/radius perturbations establish only finite sampled robustness. The doubled-step B2 interaction comparison is a timestep sensitivity check at that recipe, not a convergence theorem. The retained $0.002095923W$ profile/mesh discrepancy exceeds its $0.002W$ target. No result here establishes an independent full-campaign continuum limit, a universal parameter selector, or an optimized accuracy--cost frontier.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+\end{document}

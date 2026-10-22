@@ -1,0 +1,4 @@
+Junction-neighborhood capillary correction improves driven interface accuracy.
+Matched migration-speed error falls from 16.01% to 0.45%.
+Local component memory adds shape accuracy after junction neighborhoods overlap.
+The fixed correction transfers to OpenPhase without coefficient refitting.
