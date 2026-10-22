@@ -1,0 +1,4 @@
+-r requirements.txt
+pypdf>=5,<7
+Pillow>=10,<13
+PyYAML>=6,<7

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "Please cite this software release and the associated manuscript when using this work."
+type: software
+title: "Spatial capillary correction for driven multiphase-field junctions"
+version: 1.0.0
+date-released: 2026-10-22
+url: "https://github.com/AJayQ8/spatial-capillary-junction-correction"
+repository-code: "https://github.com/AJayQ8/spatial-capillary-junction-correction"
+authors:
+  - family-names: Alzanki
+    given-names: Ayas
+    orcid: "https://orcid.org/0009-0004-3121-3778"
+license: GPL-3.0-only
+keywords:
+  - phase-field
+  - multiphase-field
+  - triple junction
+  - capillary correction
+  - OpenPhase
+abstract: >-
+  Research code, benchmark inputs, exported figure data and manuscript sources
+  for a spatial capillary correction of driven junction motion in
+  double-obstacle multiphase-field simulations. The release includes B2 kernels,
+  an OpenPhase integration caller and a declared source-based reconstruction
+  of the Grose-Asimow comparator.
