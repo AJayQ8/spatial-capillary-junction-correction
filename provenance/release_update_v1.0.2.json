@@ -1,0 +1,57 @@
+{
+  "schema": "scjc-release-update-provenance-v1",
+  "release_version": "1.0.2",
+  "date": "2026-10-24",
+  "scope": "Documentation and manuscript refresh only. No code, input, numerical data, figure result or software-behavior changes; no new Zenodo software archive was created.",
+  "lineage": {
+    "github_tag": "v1.0.1",
+    "github_commit": "a3bfbcadc7c2df74598ccb13e9dabe885d072240",
+    "archived_software_version": "1.0.1",
+    "archived_software_doi": "10.5281/zenodo.23614984",
+    "zenodo_record_url": "https://zenodo.org/records/23614984",
+    "archived_zip_sha256": "85cea73b8dfddc7317ba0f100f772b72eb141462411ff04206f89e408d3f0f61",
+    "current_manuscript_version": "manuscript_cms_v010",
+    "current_manuscript_sha256": "e762be1edabf4d1953b993d0810e439e8ece3e0f56a14214e39fbeee46347f98"
+  },
+  "public_archive_verification": {
+    "authentication": "anonymous",
+    "verified_utc": "2026-10-24T10:11:17.818451+00:00",
+    "doi_resolver_http_status": 200,
+    "doi_final_url": "https://zenodo.org/records/23614984",
+    "record_http_status": 200,
+    "archive_zip_http_status": 200,
+    "archive_zip_bytes": 3226442,
+    "archive_zip_sha256": "85cea73b8dfddc7317ba0f100f772b72eb141462411ff04206f89e408d3f0f61",
+    "checksum_file_http_status": 200,
+    "checksum_file_sha256": "fb702d1de4cf82cc570a257760e8f265064584d2e51e5e939c3652ef3b2b3f51",
+    "checksum_matches_downloaded_archive": true
+  },
+  "changed_files": [
+    "README.md",
+    "CITATION.cff",
+    "CHANGELOG.md",
+    "docs/ARCHIVING.md",
+    "paper/discussion.tex",
+    "paper/manuscript.pdf",
+    "provenance/manuscript_snapshot.json",
+    "provenance/source_map.json",
+    "provenance/paper_rebuild_check.json",
+    "provenance/release_update_v1.0.2.json",
+    "provenance/SHA256SUMS"
+  ],
+  "unchanged": {
+    "software_release_snapshot": "v1.0.1 Zenodo ZIP remains byte-identical to the published archive.",
+    "code_configs_inputs_numerical_exports_and_result_figures": true,
+    "supplement_pdf": "Retained from v009; v010 page text and 160-dpi rendered pages match.",
+    "scientific_claims_and_numerical_results": true
+  },
+  "checks": {
+    "public_paper_tree_clean_build": true,
+    "main_pages": 11,
+    "supplement_pages": 6,
+    "source_zip_members": 45,
+    "source_zip_sha256": "8711c848c45f6bf3f2188b7c31f436e739af2b17a8ae9026a8dc7f7193960969",
+    "doi_annotation_in_manuscript": true,
+    "github_development_link_retained": true
+  }
+}

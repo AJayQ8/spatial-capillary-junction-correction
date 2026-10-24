@@ -1,7 +1,7 @@
 {
-  "retained_version": "manuscript_cms_v009",
+  "retained_version": "manuscript_cms_v010",
   "article_title": "A spatial capillary correction for driven junction motion in double-obstacle multiphase-field simulations",
-  "scope": "Manuscript v009, supplement and schematic update; numerical exports, result figures, source kernels, recipes, inputs and scientific claims remain unchanged from v1.0.0.",
+  "scope": "Manuscript v010 updates the data/code availability link to the immutable v1.0.1 archive. Scientific claims, numerical data, result figures, code, inputs and supplement content remain unchanged.",
   "files": {
     "data/figure_data/h24_shape_samples.csv": "37e2857844a69e3aba175b259eab1b9dc25d47ad07b7c10c0e502ecf1fe10123",
     "data/figure_data/h24_speed_t99_metrics.csv": "d6783f4f7ba628f5e601ea4fce7fe983477427a197d5eb3f068758f4fb9c8657",
@@ -30,7 +30,7 @@
     "paper/README": "d1e082d558435c263a24fa62f36e9f25a6189cfa63373036f74d404847125b4b",
     "paper/cas-common.sty": "e95a01f4b33531d01ade231669fcc1e42f52193dddcb22ead5b63240eb952f8f",
     "paper/cas-sc.cls": "5030545ed09c770afa31004817bf8626ca7f311cf795e6c2825ecae113bb42e9",
-    "paper/discussion.tex": "fb6c7b1f21c94f0c7ab1e3cdd1f3c699ee26c40ddde6fb0b69a33f7a6d7f42c8",
+    "paper/discussion.tex": "fcc31ec1f8e2e951ac006d7787a2575207a54ceeb8d3500372a836da940eda68",
     "paper/elsarticle-num.bst": "f04dfa2f78d0198ab8e4055b609dc0b91bdb730743cbbd549d84270f20d11394",
     "paper/figures/fig01_n20_matched.pdf": "35c9bd46e14a689f023da2385c6fe28382ccdd1f34b7b74619c2e7a0b7ed4782",
     "paper/figures/fig01_n20_matched.png": "6e1cf9a69fef874ccf4eb2271f5db7702b974a53c383b4955f0587439d3ed5c8",
@@ -48,7 +48,7 @@
     "paper/introduction.tex": "d4c2904c1578106fcf236aee62e9dcb04647c57d45a0cd939898ac50134a8715",
     "paper/main.tex": "fe03971949a0bec397aade855228c8d4f24586de9b4457641b80fbb7f49f2316",
     "paper/manifest.txt": "a73f1a2366697c58c23ca2b5d6189a86631a6a8a849d3993ca7f330b08a1c671",
-    "paper/manuscript.pdf": "2eb54a11d793d3636ce4fbfb91bf9b8735d0153ad6516d4f19d374f13e9ea105",
+    "paper/manuscript.pdf": "e762be1edabf4d1953b993d0810e439e8ece3e0f56a14214e39fbeee46347f98",
     "paper/methods.tex": "70b8aef8d13caa72d25fb584a6a6fad32359fbfe809cfae3562b289a7021f473",
     "paper/references.bib": "7354d31a03ebc99f5698b9c9781e8934f633d0b2cb4b0b17566bb630e6e20a44",
     "paper/results.tex": "aff94cb1b5946c75f3dd7589722ebd2f42ef8504ceca6f169f42dc5a06f5e7a4",
@@ -60,5 +60,20 @@
     "paper/thumbnails/cas-linkedin.jpeg": "3fa7b9ead03ed5d1976316aa1d69157eeeaefae04fab568a4d704185755f7f9f",
     "paper/thumbnails/cas-twitter.jpeg": "bf2765da8cc4cc58fef109fd0f864b4fc39d7ba8e8040c8633542076ccdc91ef",
     "paper/thumbnails/cas-url.jpeg": "66e3c16ef98e082d61397c9644ccae92c227bae49fd7eba5bcad4a6623fd67d5"
+  },
+  "previous_version": "manuscript_cms_v009",
+  "associated_software_archive": {
+    "version": "1.0.1",
+    "doi": "10.5281/zenodo.23614984",
+    "record_url": "https://zenodo.org/records/23614984",
+    "zip_sha256": "85cea73b8dfddc7317ba0f100f772b72eb141462411ff04206f89e408d3f0f61"
+  },
+  "supplement_pdf_lineage": {
+    "release_file_sha256": "824c48e3c7f1bade46d93a56d701ef86bd001c3026562fc930ee497e624dbddd",
+    "retained_from": "manuscript_cms_v009",
+    "v010_build_page_text_match": true,
+    "v010_160dpi_renders_pixel_identical": true,
+    "v010_rebuilt_pdf_byte_identical": false,
+    "note": "The public supplement PDF bytes are retained from v009; the v010 rebuild differs at the PDF-byte level, while page text and 160-dpi render match."
   }
 }

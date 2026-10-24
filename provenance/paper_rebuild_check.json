@@ -1,12 +1,12 @@
 {
   "status": "PASS",
-  "release_version": "1.0.1",
-  "retained_manuscript_version": "manuscript_cms_v009",
+  "release_version": "1.0.2",
+  "retained_manuscript_version": "manuscript_cms_v010",
   "engine": "Tectonic 0.17.0",
-  "source": "Clean extraction of the CMS LaTeX_source.zip; no private authoring paths required.",
+  "source": "Clean temporary copy of the public repository paper/ source tree; no private authoring paths are required.",
   "source_archive": {
-    "file": "CMS package LaTeX_source.zip",
-    "sha256": "6d6e560de18cf27524be94dcd5381512ff644e8bde2b11ac7ed6803199efd279",
+    "file": "Companion CMS v010 LaTeX_source.zip",
+    "sha256": "8711c848c45f6bf3f2188b7c31f436e739af2b17a8ae9026a8dc7f7193960969",
     "member_count": 45,
     "prebuilt_bbl_included": false,
     "bibtex_generated_during_build": true
@@ -21,8 +21,11 @@
       "pages": 11,
       "normalized_page_text_match": true,
       "page_count_match": true,
-      "retained_sha256": "2eb54a11d793d3636ce4fbfb91bf9b8735d0153ad6516d4f19d374f13e9ea105",
-      "rebuilt_sha256": "c571300f4c30ef82e584456c4ac4a3c9fd8ea4a7155364d57577b07b7abc6165"
+      "retained_sha256": "e762be1edabf4d1953b993d0810e439e8ece3e0f56a14214e39fbeee46347f98",
+      "rebuilt_sha256": "079f94a4ee10f0c1a75c369b6acc204b2f736410220e82fc5fb0dbc3d9652f52",
+      "changed_page_from_v009": [
+        10
+      ]
     },
     {
       "retained": "paper/supplement.pdf",
@@ -30,8 +33,14 @@
       "normalized_page_text_match": true,
       "page_count_match": true,
       "retained_sha256": "824c48e3c7f1bade46d93a56d701ef86bd001c3026562fc930ee497e624dbddd",
-      "rebuilt_sha256": "2e5081a98b166757f162c469cd77bd7b949c926cec95de902cf1a6cda8394eac"
+      "rebuilt_sha256": "176403bcfda90774dadcc23e5138578d64eb769e7aefee6e5a649fa36c0850d9",
+      "byte_identical_to_v010_rebuild": false,
+      "v010_render_pixel_identical_to_retained_at_160dpi": true
     }
   ],
-  "tex_warning": "The main build repeats the inherited overfull title hbox warning (117.0831 pt at main.tex line 46); the supplement build reports no TeX warnings. The normalized extracted text matches page by page in both PDFs."
+  "tex_warning": "The main build emits the inherited 117.0831 pt overfull title hbox at main.tex line 46 and underfull boxes in the DOI-link paragraph; no visible clipping was found. The supplement build emits no TeX warnings.",
+  "archive_link_annotations": {
+    "doi": "https://doi.org/10.5281/zenodo.23614984",
+    "development_repository": "https://github.com/AJayQ8/spatial-capillary-junction-correction"
+  }
 }

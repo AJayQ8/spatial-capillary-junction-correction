@@ -188,6 +188,24 @@
       "release_path": "tests/run_release_smoke.py",
       "release_sha256": "e67b229812dd92629587d8211928c65e400eb66cc426686fb6a7d7313707fdce",
       "role": "Bounded local release qualification orchestration"
+    },
+    {
+      "release_path": "paper/discussion.tex",
+      "release_sha256": "fcc31ec1f8e2e951ac006d7787a2575207a54ceeb8d3500372a836da940eda68",
+      "retained_source_version": "manuscript_cms_v010",
+      "retained_source_file": "discussion.tex",
+      "retained_source_sha256": "fcc31ec1f8e2e951ac006d7787a2575207a54ceeb8d3500372a836da940eda68",
+      "byte_identical_to_retained_source": true,
+      "role": "Manuscript data/code availability source linking the v1.0.1 software and data archive DOI."
+    },
+    {
+      "release_path": "paper/manuscript.pdf",
+      "release_sha256": "e762be1edabf4d1953b993d0810e439e8ece3e0f56a14214e39fbeee46347f98",
+      "retained_source_version": "manuscript_cms_v010",
+      "retained_source_file": "main.pdf",
+      "retained_source_sha256": "e762be1edabf4d1953b993d0810e439e8ece3e0f56a14214e39fbeee46347f98",
+      "byte_identical_to_retained_source": true,
+      "role": "Typeset main manuscript v010; only page 10 differs from the v009 PDF because the availability statement now links the archive DOI."
     }
   ],
   "configs": [
@@ -275,5 +293,11 @@
     "The small time loop implements only the fixed H24 B2 domain; it does not implement N20 moving-window recentering or the full production observer suite.",
     "OpenPhase caller qualification advances two steps only; full schedules are available as explicit user-run commands but no full-horizon rerun is part of release qualification.",
     "Grose source and recipe are included for a one-step reconstruction check, not a full production comparator trajectory."
-  ]
+  ],
+  "associated_software_archive": {
+    "software_version": "1.0.1",
+    "doi": "10.5281/zenodo.23614984",
+    "record_url": "https://zenodo.org/records/23614984",
+    "zip_sha256": "85cea73b8dfddc7317ba0f100f772b72eb141462411ff04206f89e408d3f0f61"
+  }
 }
