@@ -1,5 +1,5 @@
 # Archiving and citation
 
-Each release has a version tag, a source ZIP and SHA-256 checksums. Use the tag when citing a particular version.
+The immutable software and data snapshot is GitHub tag [`v1.0.1`](https://github.com/AJayQ8/spatial-capillary-junction-correction/tree/v1.0.1), commit [`a3bfbcadc7c2df74598ccb13e9dabe885d072240`](https://github.com/AJayQ8/spatial-capillary-junction-correction/commit/a3bfbcadc7c2df74598ccb13e9dabe885d072240), archived at [10.5281/zenodo.23614984](https://doi.org/10.5281/zenodo.23614984). Use `CITATION.cff` to cite the versioned software and data snapshot.
 
-A Zenodo archive is planned. Its DOI will be added to `CITATION.cff`, the README and the manuscript after publication of the archive. Existing release files will remain available.
+GitHub v1.0.2 is a documentation-only update that refreshes the current manuscript source and PDF to identify the v1.0.1 archive. It does not modify or replace the archived software/data snapshot; the current manuscript is maintained separately from the immutable Zenodo record.
