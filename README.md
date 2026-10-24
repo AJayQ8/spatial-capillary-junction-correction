@@ -56,6 +56,6 @@ The paper demonstrates accuracy improvements in the tested driven-junction setti
 
 ## Citation and license
 
-Use [CITATION.cff](CITATION.cff) to cite version `1.0.1`, and cite the accompanying manuscript when using its results. A Zenodo DOI will be added when the archive is published.
+Cite the software and data, version `1.0.1`, using [10.5281/zenodo.23614984](https://doi.org/10.5281/zenodo.23614984) and [CITATION.cff](CITATION.cff). GitHub v1.0.2 updates the manuscript and DOI links; the archived code and data are unchanged.
 
 Original material is licensed under GPL-3.0-only. The Elsevier LaTeX files retain their LPPL licenses; other dependencies retain their own licenses. See [LICENSE](LICENSE) and [THIRD_PARTY.md](THIRD_PARTY.md).

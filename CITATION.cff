@@ -4,6 +4,7 @@ type: software
 title: "Spatial capillary correction for driven multiphase-field junctions"
 version: 1.0.1
 date-released: 2026-10-22
+doi: "10.5281/zenodo.23614984"
 url: "https://github.com/AJayQ8/spatial-capillary-junction-correction"
 repository-code: "https://github.com/AJayQ8/spatial-capillary-junction-correction"
 authors:

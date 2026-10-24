@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.2 — 2026-10-24
+- Cite the published Zenodo archive for the immutable v1.0.1 software and data snapshot.
+- Update the manuscript availability statement, source and PDF to link the archive DOI.
+- Clarify that this GitHub update is documentation-only; code, inputs, numerical data and results are unchanged, and the v1.0.1 Zenodo archive remains the software snapshot.
+
+
 ## v1.0.1 — 2026-10-22
 
 - Center the Figure 1(c) title and improve supplement table spacing.
